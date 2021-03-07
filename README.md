@@ -17,8 +17,8 @@ Node Tree<br>
  r<br>
  &nbsp;&nbsp;|- a<br>
  &nbsp;&nbsp;|- b<br>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| - c<br>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| - d<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| - c<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| - d<br>
  &nbsp;&nbsp;| - e<br>
 
 **Validation:**
