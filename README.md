@@ -13,13 +13,13 @@ For example :
 string expression r(a()b(c()d())e())
 
 Your output should be: (or similar representing the node tree)
-Node Tree
+Node Tree<br>
  r<br>
- &nbsp;|- a<br>
- &nbsp;|- b<br>
- &nbsp;&nbsp;| - c<br>
- &nbsp;&nbsp;| - d<br>
- &nbsp;| - e<br>
+ &nbsp;&nbsp;|- a<br>
+ &nbsp;&nbsp;|- b<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;| - c<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;| - d<br>
+ &nbsp;&nbsp;| - e<br>
 
 **Validation:**
 * Must validate the string expression - parenthesis must be balanced
