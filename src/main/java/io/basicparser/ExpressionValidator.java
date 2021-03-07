@@ -2,6 +2,12 @@ package io.basicparser;
 
 import io.basicparser.exceptions.BasicParserException;
 
+/**
+ * This class uses the ExpressionChecker and BasicParserException classes to determine if a 
+ * potential parsing exception need to be thrown and handled
+ * @author arshadmayet
+ *
+ */
 public class ExpressionValidator {
     /**
      * This method validates that the brackets balance in the string expression

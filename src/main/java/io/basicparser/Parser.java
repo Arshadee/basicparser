@@ -6,8 +6,9 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 /**
- *
+ * Utility Class that houses methods used to Parse the string expression
  * @author Arshad
+ * 
  */
 public class Parser {
  

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- *
+ * Model class used to store parsed data
  * @author Arshad
  */
 public class DataModel {

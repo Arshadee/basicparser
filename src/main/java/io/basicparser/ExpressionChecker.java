@@ -3,6 +3,12 @@ package io.basicparser;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This class houses the string expression formatting rules
+ * required for parsing and is used by the Validator class
+ * @author arshadmayet
+ *
+ */
 public class ExpressionChecker {
 
     /**

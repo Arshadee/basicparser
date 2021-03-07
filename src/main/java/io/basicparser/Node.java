@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Model class - specifically used to store node data parsed from string expression
  * @author Arshad
  */
 public class Node<T> {

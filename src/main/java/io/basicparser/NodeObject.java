@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Model class - specifically used to store node relation data parsed from string expression
  * @author Arshad
  */
 public class NodeObject {
@@ -18,7 +18,7 @@ public class NodeObject {
         return objectElement;
     }
 
-    public void setOe(Node<String> objectElement) {
+    public void setObjectElement(Node<String> objectElement) {
         this.objectElement = objectElement;
     }
 
@@ -26,7 +26,7 @@ public class NodeObject {
         return objectElements;
     }
 
-    public void setOes(List<Node<String>> objectElements) {
+    public void setObjectElements(List<Node<String>> objectElements) {
         this.objectElements = objectElements;
     }
    

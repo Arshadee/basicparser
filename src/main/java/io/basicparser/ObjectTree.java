@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * Model Object - Specifically used to store tree object from parsed string expression
  * @author Arshad
  */
 

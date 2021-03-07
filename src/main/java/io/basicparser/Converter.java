@@ -4,7 +4,8 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- *
+ * Utility class - houses method(s) used to convert parsed string expression
+ * into a tree object
  * @author Arshad
  */
 public class Converter {

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- *
+ * View class - this class contains logic to display input and results
  * @author Arshad
  */
 public class Display {
