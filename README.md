@@ -14,12 +14,12 @@ string expression r(a()b(c()d()))
 
 Your output should be: (or similar representing the node tree)
 Node Tree
- r/n
- | - a
- | - b
-     | - c
-     | - d
-         | - e
+ r<br>
+ | - a<br>
+ | - b<br>
+     | - c<br>
+     | - d<br>
+         | - e<br>
 
 **Validation:**
 * Must validate the string expression - parenthesis must be balanced
@@ -28,9 +28,9 @@ Node Tree
 * No brackets not following i.e. belonging to a node.
 * Expression cannot represent a disjoint tree and / or have a missing Root Node
 
-#This project is the solution for this code challenge, Basic Parser
+# This project is the solution for this code challenge, Basic Parser
 
-##To clone
+## To clone
 
 
 ## Build / Compile and Run the application using my scripts
