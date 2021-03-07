@@ -9,9 +9,7 @@ public class ExpressionValidator {
      * @throws IllegalArgumentException
      */
 	public static void validateExprBalanceBrace(String expression) throws BasicParserException{
-	//throws IllegalArgumentException {
 		if (!ExpressionChecker.checkBraces(expression))
-			//throw new IllegalArgumentException("Parentesis '(' , ')'  mismatched");
 			throw new BasicParserException("Parentesis '(' , ')'  mismatched");
 
 	}
@@ -23,9 +21,7 @@ public class ExpressionValidator {
 	 * @throws IllegalArgumentException
 	 */
 	public static void validateExprMisplacedBraceNode(String expression) throws BasicParserException{
-			//throws IllegalArgumentException {
 		if (!ExpressionChecker.checkValidExpression(expression))
-			//throw new IllegalArgumentException("String Expression Incorrect misplaced bracket(s) or node value");
 			throw new BasicParserException("String Expression Incorrect misplaced bracket(s) or node value");
 	}
 
@@ -37,9 +33,7 @@ public class ExpressionValidator {
 	 */
 	public static void validateExprHasRootAndNotDisjoint(String expression, String result)
 			throws BasicParserException{
-			//throws IllegalArgumentException {
 		if (!ExpressionChecker.checkForRootNodeAndDisjointTree(expression, result))
-			//throw new IllegalArgumentException("Expression does not have a root node or represents a dis-joint tree");
 			throw new BasicParserException("Expression does not have a root node or represents a dis-joint tree");
 	}
 }

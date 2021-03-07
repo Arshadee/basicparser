@@ -29,7 +29,7 @@ public class Display {
    
     /**
      * This method displays Tree Object created from the expression string
-     * using the Depth First Search algorithm
+     * using the Depth First Search algorithm, overloaded method
      * @param objectTree
      * @param tab
      */
@@ -49,7 +49,7 @@ public class Display {
     
     /**
      * This method displays Tree Object created from the expression string
-     * using the Depth First Search algorithm
+     * using the Depth First Search algorithm, overloaded method
      * @param objectTree
      * @param tab
      * @param result
