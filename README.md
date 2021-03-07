@@ -35,13 +35,13 @@ https://github.com/Arshadee/basicparser.git
 
 ## Build / Compile and Run the application using my scripts
 In the main project folder, **basicParser**, run the following: on mac-os / unix operating systems</br>
-**chmod +rx buildRun.sh**  <i>Initially to make executable</i></br> 
-**./buildRun.sh** <i>To run script</i>
+**chmod +rx buildRun.sh**  <i> - Initially to make executable</i></br> 
+**./buildRun.sh** <i> - To run script</i>
 
 ## Run the application only using my scripts
 In the main project folder, **basicParser**, run the following: on mac-os / unix operating systems</br>
-**chmod +rx run.sh** <i>Initially to make executable</i></br>
-**./run.sh** <i>To run script</i>
+**chmod +rx run.sh** <i> - Initially to make executable</i></br>
+**./run.sh** <i> - To run script</i>
 
 ## Build / Compile the application using maven
 In command-Line / term navigate to the main project folder, **basicParser**,
