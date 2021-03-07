@@ -31,7 +31,7 @@ Node Tree<br>
 # This project is the solution for this code challenge, Basic Parser
 
 ## To clone
-
+https://github.com/Arshadee/basicparser.git
 
 ## Build / Compile and Run the application using my scripts
 In the main project folder, **basicParser**, run the following: on macos / unix
