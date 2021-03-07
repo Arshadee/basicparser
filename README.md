@@ -34,12 +34,12 @@ Node Tree<br>
 https://github.com/Arshadee/basicparser.git
 
 ## Build / Compile and Run the application using my scripts
-In the main project folder, **basicParser**, run the following: on macos / unix
+In the main project folder, **basicParser**, run the following: on mac-os / unix operating systems</br>
 **chmod +rx buildRun.sh**</br>
 **./buildRun.sh**
 
 ## Run the application only using my scripts
-In the main project folder, **basicParser**, run the following: on mac-os / unix operating systems
+In the main project folder, **basicParser**, run the following: on mac-os / unix operating systems</br>
 **chmod +rx run.sh**</br>
 **./run.sh**
 
