@@ -10,16 +10,16 @@ Code Challenge : Basic parser convert a string expresion into an object tree
 
 For example :
 
-string expression r(a()b(c()d()))
+string expression r(a()b(c()d())e())
 
 Your output should be: (or similar representing the node tree)
 Node Tree
  r<br>
- | - a<br>
- | - b<br>
-     | - c<br>
-     | - d<br>
-         | - e<br>
+ &nbsp;|- a<br>
+ &nbsp;|- b<br>
+ &nbsp;&nbsp;| - c<br>
+ &nbsp;&nbsp;| - d<br>
+ &nbsp;| - e<br>
 
 **Validation:**
 * Must validate the string expression - parenthesis must be balanced
