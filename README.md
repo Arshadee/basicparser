@@ -1,7 +1,7 @@
 # basicparser
 Code Challenge : Basic parser convert a string expresion into an object tree
 
-##Given any string expression for example r(a()b(c()d(e()))) following this format.
+## Given any string expression for example r(a()b(c()d(e()))) following this format.
 
 **Parsing:**
 * Convert the string expression of node and their relations into a hierarchical,
