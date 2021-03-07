@@ -14,7 +14,7 @@ string expression r(a()b(c()d()))
 
 Your output should be: (or similar representing the node tree)
 Node Tree
- r
+ r/n
  | - a
  | - b
      | - c
