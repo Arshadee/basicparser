@@ -107,6 +107,19 @@ class BasicParserTest {
 
 	@Test
 	void testCase6ExceptionIncorrectExpression() {
+		String testExpression = "r";
+		Exception exception = assertThrows(BasicParserException.class, () -> {
+		    ExpressionValidator.validateExprMisplacedBraceNode(testExpression);
+		});
+
+		String expectedMessage = "String Expression Incorrect misplaced bracket(s) or node value";
+		String actualMessage = exception.getMessage();
+
+		assertTrue(actualMessage.contains(expectedMessage));
+	}
+	
+	@Test
+	void testCase7ExceptionIncorrectExpression() {
 		String testExpression = "r(a(b(c()d()))eg())";
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 			ExpressionValidator.validateExprBalanceBrace(testExpression);
@@ -120,7 +133,7 @@ class BasicParserTest {
 	}
 
 	@Test
-	void testCase7ExceptionIncorrectExpression() {
+	void testCase8ExceptionIncorrectExpression() {
 		String testExpression = "r(a(b(c()d()))e()()";
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 		    ExpressionValidator.validateExprMisplacedBraceNode(testExpression);
@@ -133,7 +146,7 @@ class BasicParserTest {
 	}
 
 	@Test
-	void testCase8ExceptionIncorrectExpression() {
+	void testCase9ExceptionIncorrectExpression() {
 		String testExpression = "r(a(b(c()d()))e(())";
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 		    ExpressionValidator.validateExprMisplacedBraceNode(testExpression);
@@ -146,7 +159,7 @@ class BasicParserTest {
 	}
 
 	@Test
-	void testCase9ExceptionIncorrectExpressionDisjointTree() {
+	void testCase10ExceptionIncorrectExpressionDisjointTree() {
 		String testExpression = "a()b(c()d())e(f())";
 
 		Parser parser = new Parser();
@@ -168,7 +181,7 @@ class BasicParserTest {
 	}
 
 	@Test
-	void testCase10ExceptionIncorrectExpressionDisjointTree() {
+	void testCase11ExceptionIncorrectExpressionDisjointTree() {
 		String testExpression = "r(a()b()c(d()e()))x(h()i())";
 		Parser parser = new Parser();
 
@@ -191,16 +204,5 @@ class BasicParserTest {
 		assertTrue(actualMessage.contains(expectedMessage));
 	}
 	
-	@Test
-	void testCase11ExceptionIncorrectExpression() {
-		String testExpression = "r";
-		Exception exception = assertThrows(BasicParserException.class, () -> {
-		    ExpressionValidator.validateExprMisplacedBraceNode(testExpression);
-		});
 
-		String expectedMessage = "String Expression Incorrect misplaced bracket(s) or node value";
-		String actualMessage = exception.getMessage();
-
-		assertTrue(actualMessage.contains(expectedMessage));
-	}
 }
