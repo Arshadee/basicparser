@@ -25,7 +25,6 @@ class BasicParserTest {
 
 		dataModel = parser.parse(testExpression);
 
-		//Display.display(dataModel.getParsingMap());
 		Converter.mapTreeToTreeObj(dataModel.getRoot().getName(), null, dataModel.getObjectTree(),
 				dataModel.getParsingMap());
 
