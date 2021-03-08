@@ -89,11 +89,28 @@ class BasicParserTest {
 		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 
 		assertEquals(ExpectedResults.testCase4, result);
+	}
+	@Test
+	void testCase5Success() throws BasicParserException {
+		String testExpression = "r(a(b(c(d())e())f())g())";
+		DataModel dataModel = new DataModel();
+		Parser parser = new Parser();
+		
+		ExpressionValidator.validateExprBalanceBrace(testExpression);
+	    ExpressionValidator.validateExprMisplacedBraceNode(testExpression);
+	    
+		dataModel = parser.parse(testExpression);
+		
+		Converter.mapTreeToTreeObj(dataModel.getRoot().getName(), null, dataModel.getObjectTree(),
+				dataModel.getParsingMap());
 
+		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
+
+		assertEquals(ExpectedResults.testCase5, result);
 	}
 
 	@Test
-	void testCase5ExceptionIncorrectParenthesisBalance() {
+	void testCase6ExceptionIncorrectParenthesisBalance() {
 		String testExpression = "r(a(b()c())d(e())g(h(i(j()k()l()))m(n())o())"; // error brackt impbalance
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 			ExpressionValidator.validateExprBalanceBrace(testExpression);
@@ -106,7 +123,7 @@ class BasicParserTest {
 	}
 
 	@Test
-	void testCase6ExceptionIncorrectExpression() {
+	void testCase7ExceptionIncorrectExpression() {
 		String testExpression = "r";
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 		    ExpressionValidator.validateExprMisplacedBraceNode(testExpression);
@@ -119,7 +136,7 @@ class BasicParserTest {
 	}
 	
 	@Test
-	void testCase7ExceptionIncorrectExpression() {
+	void testCase8ExceptionIncorrectExpression() {
 		String testExpression = "r(a(b(c()d()))eg())";
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 			ExpressionValidator.validateExprBalanceBrace(testExpression);
@@ -133,7 +150,7 @@ class BasicParserTest {
 	}
 
 	@Test
-	void testCase8ExceptionIncorrectExpression() {
+	void testCase9ExceptionIncorrectExpression() {
 		String testExpression = "r(a(b(c()d()))e()()";
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 		    ExpressionValidator.validateExprMisplacedBraceNode(testExpression);
@@ -146,7 +163,7 @@ class BasicParserTest {
 	}
 
 	@Test
-	void testCase9ExceptionIncorrectExpression() {
+	void testCase10ExceptionIncorrectExpression() {
 		String testExpression = "r(a(b(c()d()))e(())";
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 		    ExpressionValidator.validateExprMisplacedBraceNode(testExpression);
@@ -159,7 +176,7 @@ class BasicParserTest {
 	}
 
 	@Test
-	void testCase10ExceptionIncorrectExpressionDisjointTree() {
+	void testCase11ExceptionIncorrectExpressionDisjointTree() {
 		String testExpression = "a()b(c()d())e(f())";
 
 		Parser parser = new Parser();
@@ -181,7 +198,7 @@ class BasicParserTest {
 	}
 
 	@Test
-	void testCase11ExceptionIncorrectExpressionDisjointTree() {
+	void testCase12ExceptionIncorrectExpressionDisjointTree() {
 		String testExpression = "r(a()b()c(d()e()))x(h()i())";
 		Parser parser = new Parser();
 

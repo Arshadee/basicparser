@@ -14,13 +14,17 @@ public class Main {
 
 	public static void main(String[] args) throws IllegalArgumentException {
 		boolean cont = true;
-		System.out.println("******************************************************");
 		do {
 			// String sample = "r[r]\n" + "|--a[a]\n" + "|--|--b[b]\n" + "|--|--|--c[c]\n" +
 			// "|--|--|--d[d]\n" + "|--e[e]\n";
 			String sample = "r[r]\n" + "|--a[a]\n" + "|--b[b]\n" + "|--|--c[c]\n" + "|--|--d[d]\n";
 
 			StringBuilder example = new StringBuilder();
+			example.append("*************************************************************************\n");
+			example.append("*****************************Basic Parser********************************\n");
+			example.append("*************************************************************************\n");
+			example.append("Instructions:\n");
+			example.append("--------------\n");
 			example.append("Convert string expression r(a()b(c()d())) into\n");
 			example.append("Object tree\n");
 			example.append(sample);
@@ -37,7 +41,7 @@ public class Main {
 			Parser parser = new Parser();
 
 			Scanner myObj = new Scanner(System.in);
-			System.out.println("Enter expression");
+			System.out.println("Enter expression:");
 			String expression = myObj.nextLine();
 			//myObj.close();
 
@@ -64,7 +68,7 @@ public class Main {
 				expression = "r()";
 			}
 
-			System.out.println("Object Tree");
+			System.out.println("Object Tree - Result:");
 			System.out.println(result);
 
 			Scanner loop = new Scanner(System.in);
@@ -75,8 +79,9 @@ public class Main {
 			if (!play.equalsIgnoreCase("y")) {
 				cont = false;
 				System.out.println("bye");
+				System.out.println("*************************************************************************\n");
 			}
-			System.out.println("******************************************************");
+			
 		} while (cont);
 	}
 }
