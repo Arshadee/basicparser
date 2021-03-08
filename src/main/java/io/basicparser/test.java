@@ -1,8 +1,12 @@
 package io.basicparser;
 
+/**
+ * Tesing Applcation - used to assist with debugging various components
+ * of this application
+ */
 import io.basicparser.exceptions.BasicParserException;
 
-public class test {
+public class Test {
 	
 	static String tc1 =
 			"r[r]\n" + 

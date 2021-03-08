@@ -4,7 +4,12 @@ import java.util.Scanner;
 
 import io.basicparser.exceptions.BasicParserException;
 
-
+/**
+ * Main Application class - provides the user interface with this basicParsing app
+ * allowing the user to enter formated string expressions to convert to object trees
+ * @author arshadmayet
+ *
+ */
 public class Main {
 
 	public static void main(String[] args) throws IllegalArgumentException {
