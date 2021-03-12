@@ -62,10 +62,6 @@ public class Test {
 		}
 	      System.out.println("Object Tree");
 	      System.out.println(result);
-	      
-	      String exp = "r   (a  ()b () )";
-	      exp = exp.replaceAll("\\s", "");
-	      System.out.println(exp);
 		
 	}
 
