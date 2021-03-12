@@ -42,7 +42,7 @@ public class Main {
 
 			Scanner myObj = new Scanner(System.in);
 			System.out.println("Enter expression:");
-			String expression = myObj.nextLine();
+			String expression = myObj.nextLine().replaceAll("\\s", "");
 			//myObj.close();
 
 			try {
