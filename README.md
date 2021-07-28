@@ -4,8 +4,8 @@ Code Challenge : Basic parser convert a string expresion into an object tree
 ## Given any string expression for example r(a()b(c()d(e()))) following this format.
 
 **Parsing:**
-* Convert the string expression of node and their relations into a hierarchical,
-  tree structure, depicting their relations parent + children.<br>
+* Convert the string expression of nodes and their relations into a hierarchical,
+  tree structure, depicting their parent + children relations.<br>
    * Must force Validation Rules stated below.
 * Display the expression tree
 
