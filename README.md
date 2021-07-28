@@ -6,7 +6,7 @@ Code Challenge : Basic parser convert a string expresion into an object tree
 **Parsing:**
 * Convert the string expression of node and their relations into a hierarchical,
   tree structure, depicting their relations parent + children.<br>
-   * Must force Validation Rules stated below
+   * Must force Validation Rules stated below.
 * Display the expression tree
 
 For example :
@@ -22,7 +22,7 @@ Node Tree<br>
  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| - d<br>
  &nbsp;&nbsp;| - e<br>
 
-**Validation:**
+**Validation Rules:**
 * Must validate the string expression - parenthesis must be balanced
   no missing open or closed brackets.
 * Each Node must be followed by open bracket thats eventually closed
