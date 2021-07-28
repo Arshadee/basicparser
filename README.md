@@ -6,7 +6,7 @@ Code Challenge : Basic parser convert a string expresion into an object tree
 **Parsing:**
 * Convert the string expression of node and their relations into a hierarchical,
   tree structure, depicting their relations parent + children.<br>
-  &nbsp; O Must force Validation Rules stated below
+   * Must force Validation Rules stated below
 * Display the expression tree
 
 For example :
