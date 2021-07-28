@@ -24,7 +24,7 @@ Node Tree<br>
 **Validation:**
 * Must validate the string expression - parenthesis must be balanced
   no missing open or closed brackets.
-* Each Node must be 1 char and followed by open bracket thats eventually closed
+* Each Node must be followed by open bracket thats eventually closed
 * No brackets not following a node i.e. belonging to a node.
 * Expression cannot represent a disjoint tree and / or have a missing Root Node
 
