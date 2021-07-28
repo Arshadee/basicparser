@@ -1,7 +1,10 @@
 package io.basicparser;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.StringTokenizer;
 
 /**
  * Utility class - houses method(s) used to convert parsed string expression
@@ -10,24 +13,6 @@ import java.util.Optional;
  */
 public class Converter {
     
-
-  /* 
-    static Map<String,NObj> convertListToMap(List<Node> oes){
-        Map<String,NObj> treeMap = oes.stream().parallel().collect(
-            Collectors.toMap(Node::getName, p ->{
-                NObj n = new NObj();
-                n.setOe(p);
-                List<Node> tmpOes = (List<Node>) oes.stream().
-                    parallel().filter(x -> x.getName().equals(p.getName())).
-                    collect(Collectors.toList());
-                n.setOes(tmpOes);
-                return n;
-                }           
-            )
-        );
-        return treeMap;
-    }
-   */
     
     /**
      * This method creates an object tree from the an object map (key node , value children)
@@ -43,7 +28,8 @@ public class Converter {
         //from object map
         Node<String> node = treeMap.get(name);
         objectTree.setId(node.getName());
-        objectTree.setName(node.getName()); //eg Node Data field
+        //objectTree.setName(node.getName()); //eg Node Data field
+        objectTree.setName(node.getValue());
        
         node.getChildren().parallelStream().forEachOrdered( c -> {
         	ObjectTree n = new ObjectTree();
@@ -56,16 +42,17 @@ public class Converter {
                 mapTreeToTreeObj(nodeElement.getName(),name,cc.get(),treeMap);
             });
             
-       /** old DFS
-        for(int i =0; i<node.children.size();i++){
-            //Populate (TreeObj)  node Id and node parent and node Children field
-            ObjTree n = new ObjTree();
-            n.setParent(objTree);
-            objTree.getChildren().add(n);
-            Node<String> nodeElement = (Node<String>)(node.children.get(i));
-            mapTreeToTreeObj(nnodeElement.getName(),name,objTree.getChildren().get(i),treeMap);
-        }
-        **/
+    }
+    
+    public static List<String> mapToStringTokenList(String expression){
+    	expression = expression.replace("(", " ( ").replace(")", " ) ");
+	      List<String> tokens = new ArrayList<>();
+	      StringTokenizer tokenizer = new StringTokenizer(expression, " ");
+	      while (tokenizer.hasMoreElements()) {
+	     	 String tok = tokenizer.nextToken();
+	         tokens.add(tok);
+	      }
+	      return tokens;
     }
 
 }

@@ -1,5 +1,6 @@
 package io.basicparser;
 
+import java.util.List;
 import java.util.Scanner;
 
 import io.basicparser.exceptions.BasicParserException;
@@ -40,22 +41,25 @@ public class Main {
 			DataModel dataModel = new DataModel();
 			Parser parser = new Parser();
 
+			@SuppressWarnings("resource")
 			Scanner myObj = new Scanner(System.in);
 			System.out.println("Enter expression:");
 			String expression = myObj.nextLine().replaceAll("\\s", "");
-			//myObj.close();
+			
+			List<String> tokens = Converter.mapToStringTokenList(expression);
 
 			try {
-				ExpressionValidator.validateExprBalanceBrace(expression);
-				ExpressionValidator.validateExprMisplacedBraceNode(expression);
+				ExpressionValidator.validateExprBalanceBrace(tokens);
+				ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 			} catch (BasicParserException bpe) {
 				System.out.println("Expression Error : " + bpe.getMessage());
 				expression = "r()";
 			}
 
-			dataModel = parser.parse(expression);
+			dataModel = parser.parse(tokens);
 			System.out.println();
 
+			
 			Converter.mapTreeToTreeObj(dataModel.getRoot().getName(), null, dataModel.getObjectTree(),
 					dataModel.getParsingMap());
 
@@ -71,6 +75,7 @@ public class Main {
 			System.out.println("Object Tree - Result:");
 			System.out.println(result);
 
+			@SuppressWarnings("resource")
 			Scanner loop = new Scanner(System.in);
 			System.out.println("Do you wish to continue y/n");
 			String play = loop.nextLine();

@@ -1,5 +1,7 @@
 package io.basicparser;
 
+import java.util.List;
+
 import io.basicparser.exceptions.BasicParserException;
 
 /**
@@ -9,12 +11,12 @@ import io.basicparser.exceptions.BasicParserException;
  *
  */
 public class ExpressionValidator {
-    /**
+	/**
      * This method validates that the brackets balance in the string expression
      * @param expression
      * @throws IllegalArgumentException
      */
-	public static void validateExprBalanceBrace(String expression) throws BasicParserException{
+	public static void validateExprBalanceBrace(List<String> expression) throws BasicParserException{
 		if (!ExpressionChecker.checkBraces(expression))
 			throw new BasicParserException("Parentesis '(' , ')'  mismatched");
 
@@ -26,7 +28,7 @@ public class ExpressionValidator {
 	 * @param expression
 	 * @throws IllegalArgumentException
 	 */
-	public static void validateExprMisplacedBraceNode(String expression) throws BasicParserException{
+	public static void validateExprMisplacedBraceNode(List<String> expression) throws BasicParserException{
 		if (!ExpressionChecker.checkValidExpression(expression))
 			throw new BasicParserException("String Expression Incorrect misplaced bracket(s) or node value");
 	}

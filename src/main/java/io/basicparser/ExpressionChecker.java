@@ -1,7 +1,6 @@
 package io.basicparser;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * This class houses the string expression formatting rules
@@ -11,14 +10,13 @@ import java.util.stream.Collectors;
  */
 public class ExpressionChecker {
 
-    /**
+	/**
      * This method initiates check bracket balance of the input expression
      * @param expression
      * @return
      */
-    public static boolean checkBraces(String expression){
-      List<Character> chars = expression.chars().mapToObj(e->(char)e).collect(Collectors.toList());
-      boolean result = chkBracketBalance(chars,0,0,'-');
+    public static boolean checkBraces(List<String >chars){
+      boolean result = chkBracketBalance(chars,0,0,"-");
       return result;
       
     }
@@ -32,11 +30,18 @@ public class ExpressionChecker {
      * @param lastBracket
      * @return
      */
-    private static boolean chkBracketBalance(List<Character> chars,int index, int noOfOpenBrackets, char lastBracket){
-    	if(index==chars.size()) return noOfOpenBrackets==0 && lastBracket != '(';
-    	else if (chars.get(index)=='(') return chkBracketBalance(chars,index+1,noOfOpenBrackets+1,'(');
-     	else if (chars.get(index)==')') return chkBracketBalance(chars,index+1,noOfOpenBrackets-1,')');
-      	else return chkBracketBalance(chars,index+1,noOfOpenBrackets,lastBracket);
+    private static boolean chkBracketBalance(List<String> chars,int index, int noOfOpenBrackets, String lastBracket){
+    	if(index==chars.size()) {
+    		return noOfOpenBrackets==0 && lastBracket != "(";
+    	}
+    	String cursor = chars.get(index);
+    	if (cursor.equals("(")) {
+    		return chkBracketBalance(chars,index+1,noOfOpenBrackets+1,"(");
+    	}
+     	if (cursor.equals(")")) {
+     		return chkBracketBalance(chars,index+1,noOfOpenBrackets-1,")");
+     	}
+      	return chkBracketBalance(chars,index+1,noOfOpenBrackets,lastBracket);
     }
     
     /**
@@ -44,11 +49,10 @@ public class ExpressionChecker {
      * @param expression
      * @return
      */
-    public static boolean checkValidExpression(String expression) {
-		 List<Character> chars = expression.chars().mapToObj(e->(char)e).collect(Collectors.toList());
-	      boolean result = checkNodeNBrackets(chars);
-	      return result;
-	}
+     public static boolean checkValidExpression(List<String> expression) {
+ 	      boolean result = checkNodeNBrackets(expression);
+ 	      return result;
+ 	 }
 	
     /**
      * This method performs the String Expresion validation check scanning each char, checking nodes and braces 
@@ -56,18 +60,16 @@ public class ExpressionChecker {
      * @param chars
      * @return
      */
-	private static boolean checkNodeNBrackets(List<Character> chars) {
+	private static boolean checkNodeNBrackets(List<String> chars) {
 		if(chars.size()<=1) return false;
-		boolean isChar = false;
+		@SuppressWarnings("unused")
+		boolean isChar= false;
 		boolean isOpen = false;
 		boolean isClose= false;
-		for(Character c: chars) {
-			boolean isCharCurrent = (!c.equals('('))&&(!c.equals(')'));
-			boolean isOpenCurrent = c.equals('(');
-			boolean isCloseCurrent=c.equals(')');
-			
-			//rx or r)
-			if(isChar && (isCharCurrent || isCloseCurrent)) return false;
+		for(String c: chars) {
+			boolean isCharCurrent = (!c.equals("("))&&(!c.equals(")"));
+			boolean isOpenCurrent = c.equals("(");
+			boolean isCloseCurrent=c.equals(")");
 			//..((
 			if(isOpen && (isOpenCurrent)) return false;
 			// ..)(
@@ -80,6 +82,7 @@ public class ExpressionChecker {
 		}		
 		return true;
 	}
+
 	
 	/**
 	 * This method checks if the string expression has a root node or that it does not represent a dis-jointed tree
@@ -91,5 +94,6 @@ public class ExpressionChecker {
 	public static boolean checkForRootNodeAndDisjointTree(String expression,String result) {
 		return expression.charAt(0) == result.charAt(0);
 	}
+	
 	
 }

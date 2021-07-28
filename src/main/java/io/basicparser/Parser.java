@@ -2,6 +2,7 @@ package io.basicparser;
 
 import java.util.EmptyStackException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
@@ -47,7 +48,8 @@ public class Parser {
     private static void addMapElement(String element,
             Map<String, Node<String>> map) {
         if (map.get(element) == null) {
-            map.put(element, new Node<String>(element));
+           // map.put(element, new Node<String>(element));
+        	map.put(element, new Node<String>(element.charAt(0)+"",element));
         }
     }
 
@@ -81,8 +83,6 @@ public class Parser {
     	DataModel dataModel = new DataModel();
         for (int i = 0; i < expression.length(); i++) {
             if (expression.charAt(i) == ')') {
-              //  buildNodeStr();
-              //	buildNodeStr(dm);
             	dataModel = buildNodeStr(dataModel);
             }
             if ((expression.charAt(i) != '(') && (expression.charAt(i) != ')')) {
@@ -91,24 +91,19 @@ public class Parser {
         }
         return dataModel;
     }
+    
+    public DataModel parse(List<String> expression) {
+    	DataModel dataModel = new DataModel();
+        for (int i = 0; i < expression.size(); i++) {
+            if (expression.get(i).equals(")")){
+            	dataModel = buildNodeStr(dataModel);
+            }
+            if ((!expression.get(i).equals("(")) && (!expression.get(i).equals(")"))) {
+            	dataModel.getParsingStack().push(expression.get(i));
+            }
+        }
+        return dataModel;
+    }
 
-//    public void createMapFrmString(String s,
-//                        HashMap<String, Node<String>> parsingMap){
-//        StringTokenizer st = new StringTokenizer(s, "->");
-//        String tmp1 = st.nextElement().toString();
-//        String tmp2 = "";
-//
-//        if (parsingMap.get(tmp1) == null) {
-//        	parsingMap.put(tmp1, new Node<String>(tmp1));
-//        }
-//
-//        if (st.hasMoreElements()) {
-//            tmp2 = st.nextElement().toString();
-//            if (parsingMap.get(tmp2) == null) {
-//            	parsingMap.put(tmp2, new Node<String>(tmp2));
-//            }
-//            parsingMap.get(tmp1).children.add(parsingMap.get(tmp2));
-//            parsingMap.get(tmp2).parent = parsingMap.get(tmp1);
-//        }
-//    }
+
 }
