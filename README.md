@@ -15,13 +15,14 @@ string expression r(a()b(c()d())e())
 
 Your output should be: (or similar representing the node tree)
 Node Tree<br>
- r<br>
- &nbsp;&nbsp;|- a<br>
- &nbsp;&nbsp;|- b<br>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| - c<br>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| - d<br>
- &nbsp;&nbsp;| - e<br>
 
+ r<br>
+ |--a<br>
+ |--b<br>
+ |--|--c<br>
+ |--|--d<br>
+ |--e<br>
+ 
 **Validation Rules:**
 * Must validate the string expression - parenthesis must be balanced
   no missing open or closed brackets.
