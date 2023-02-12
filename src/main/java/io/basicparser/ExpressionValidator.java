@@ -44,4 +44,10 @@ public class ExpressionValidator {
 		if (!ExpressionChecker.checkForRootNodeAndDisjointTree(expression, result))
 			throw new BasicParserException("Expression does not have a root node or represents a dis-joint tree");
 	}
+	
+	public static void validateExprHasCyclicRelation(List<String> expression) throws BasicParserException {
+		if(!ExpressionChecker.checkForNoCyclicRelation(expression)) {
+			throw new BasicParserException("Expression has cyclic relationship");
+		}
+	}
 }

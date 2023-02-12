@@ -1,6 +1,7 @@
 package io.basicparser;
 
-import java.util.List;
+import java.util.List;import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * This class houses the string expression formatting rules
@@ -95,5 +96,21 @@ public class ExpressionChecker {
 		return expression.charAt(0) == result.charAt(0);
 	}
 	
-	
+	/**
+	 * 
+	 */
+	public static boolean checkForNoCyclicRelation(List<String> tokens) {
+		List<String> elements = tokens.stream()
+				.filter(x->(!x.equals(")")))
+				.filter(x->(!x.equals("(")))
+				.collect(Collectors.toList());
+		
+		List<String> distinctElements = tokens.stream()
+				.filter(x->(!x.equals(")")))
+				.filter(x->(!x.equals("(")))
+				.distinct()
+				.collect(Collectors.toList());
+		
+		return elements.size() == distinctElements.size();
+	}
 }

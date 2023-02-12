@@ -51,18 +51,27 @@ public class Main {
 			try {
 				ExpressionValidator.validateExprBalanceBrace(tokens);
 				ExpressionValidator.validateExprMisplacedBraceNode(tokens);
+				ExpressionValidator.validateExprHasCyclicRelation(tokens);
 			} catch (BasicParserException bpe) {
 				System.out.println("Expression Error : " + bpe.getMessage());
 				expression = "r()";
+				Scanner resume= new Scanner(System.in);
+				System.out.println("Hit a key to continue");
+				String resumeKey = resume.nextLine().replaceAll("\\s", "");
+				continue;
 			}
-
+			
 			dataModel = parser.parse(tokens);
 			System.out.println();
 
 			
-			Converter.mapTreeToTreeObj(dataModel.getRoot().getName(), null, dataModel.getObjectTree(),
+		//	Converter.mapTreeToTreeObj(dataModel.getRoot().getName(), null, dataModel.getObjectTree(),
+		//			dataModel.getParsingMap());
+			
+			
+			Converter.mapTreeToTreeObjItr(dataModel.getRoot().getName(), null, dataModel.getObjectTree(),
 					dataModel.getParsingMap());
-
+			
 			String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 
 			try {
