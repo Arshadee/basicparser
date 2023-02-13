@@ -29,6 +29,7 @@ Node Tree<br>
 * Each Node must be followed by open bracket thats eventually closed
 * No brackets not following a node i.e. belonging to a node.
 * Expression cannot represent a disjoint tree and / or have a missing Root Node
+* No cyclic relations. 
 
 # This project is the solution for this code challenge, Basic Parser
 
