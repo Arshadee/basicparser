@@ -53,11 +53,7 @@ public class Main {
 				ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 				ExpressionValidator.validateExprHasCyclicRelation(tokens);
 			} catch (BasicParserException bpe) {
-				System.out.println("Expression Error : " + bpe.getMessage());
-				expression = "r()";
-				Scanner resume= new Scanner(System.in);
-				System.out.println("Hit a key to continue");
-				String resumeKey = resume.nextLine().replaceAll("\\s", "");
+				errorHandling(bpe,expression);
 				continue;
 			}
 			
@@ -77,8 +73,8 @@ public class Main {
 			try {
 				ExpressionValidator.validateExprHasRootAndNotDisjoint(expression, result);
 			} catch (BasicParserException bpe) {
-				System.out.println("Expression Error : " + bpe.getMessage());
-				expression = "r()";
+				errorHandling(bpe,expression);
+				continue;
 			}
 
 			System.out.println("Object Tree - Result:");
@@ -97,5 +93,13 @@ public class Main {
 			}
 			
 		} while (cont);
+	}
+	
+	private static void errorHandling(BasicParserException bpe, String expression) {
+		System.out.println("Expression Error : " + bpe.getMessage());
+		expression = "r()";
+		Scanner resume= new Scanner(System.in);
+		System.out.println("Hit a key to continue");
+		String resumeKey = resume.nextLine().replaceAll("\\s", "");
 	}
 }
