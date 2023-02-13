@@ -17,7 +17,7 @@ public class Converter {
 
 	/**
 	 * This method creates an object tree from the an object map (key node , value
-	 * children) it uses the Depth First Search algorithm
+	 * children) it uses the Depth First Search algorithm - Recursion Implementation
 	 * 
 	 * @param name
 	 * @param pid
@@ -45,18 +45,17 @@ public class Converter {
 
 	}
 
-	public static List<String> mapToStringTokenList(String expression) {
-		expression = expression.replace("(", " ( ").replace(")", " ) ");
-		List<String> tokens = new ArrayList<>();
-		StringTokenizer tokenizer = new StringTokenizer(expression, " ");
-		while (tokenizer.hasMoreElements()) {
-			String tok = tokenizer.nextToken();
-			tokens.add(tok);
-		}
-		return tokens;
-	}
-
-	public static void mapTreeToTreeObjItr(String name, String pid, ObjectTree objTree, Map<String, Node<String>> treeMap) {
+	/**
+	 * This method creates an object tree from the an object map (key node , value
+	 * children) it uses the Depth First Search algorithm - Iterative implmentation
+	 * 
+	 * @param name
+	 * @param pid
+	 * @param objectTree
+	 * @param treeMap
+	 */
+	public static void mapTreeToTreeObjItr(String name, String pid, ObjectTree objTree,
+			Map<String, Node<String>> treeMap) {
 
 		Stack<Node<String>> stack = new Stack();
 		Node<String> node = treeMap.get(name);
@@ -79,8 +78,27 @@ public class Converter {
 				n.setId(child.getName());
 				n.setParent(objTree);
 				objTree.getChildren().add(n);
-				stackObjTree.push(n);		
+				stackObjTree.push(n);
 			}
 		}
 	}
+	
+	/**
+	 * This method converts the String expression into List of String tokens
+	 * 
+	 * @param expression
+	 * @return
+	 */
+	public static List<String> mapToStringTokenList(String expression) {
+		expression = expression.replace("(", " ( ").replace(")", " ) ");
+		List<String> tokens = new ArrayList<>();
+		StringTokenizer tokenizer = new StringTokenizer(expression, " ");
+		while (tokenizer.hasMoreElements()) {
+			String tok = tokenizer.nextToken();
+			tokens.add(tok);
+		}
+		return tokens;
+	}
+
+	
 }

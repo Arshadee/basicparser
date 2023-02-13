@@ -6,8 +6,10 @@ import java.util.Scanner;
 import io.basicparser.exceptions.BasicParserException;
 
 /**
- * Main Application class - provides the user interface with this basicParsing app
- * allowing the user to enter formated string expressions to convert to object trees
+ * Main Application class - provides the user interface with this basicParsing
+ * app allowing the user to enter formated string expressions to convert to
+ * object trees
+ * 
  * @author arshadmayet
  *
  */
@@ -45,7 +47,7 @@ public class Main {
 			Scanner myObj = new Scanner(System.in);
 			System.out.println("Enter expression:");
 			String expression = myObj.nextLine().replaceAll("\\s", "");
-			
+
 			List<String> tokens = Converter.mapToStringTokenList(expression);
 
 			try {
@@ -53,27 +55,32 @@ public class Main {
 				ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 				ExpressionValidator.validateExprHasCyclicRelation(tokens);
 			} catch (BasicParserException bpe) {
-				errorHandling(bpe,expression);
+				errorHandling(bpe, expression);
 				continue;
 			}
-			
+
 			dataModel = parser.parse(tokens);
 			System.out.println();
 
-			
-		//	Converter.mapTreeToTreeObj(dataModel.getRoot().getName(), null, dataModel.getObjectTree(),
-		//			dataModel.getParsingMap());
-			
-			
+			/*
+			 * Recursive DFS Call - to parse expression
+			 */
+			// Converter.mapTreeToTreeObj(dataModel.getRoot().getName(), null,
+			// dataModel.getObjectTree(),
+			// dataModel.getParsingMap());
+
+			/*
+		    *  Iterative DFS Call - to parse expression		
+		    */
 			Converter.mapTreeToTreeObjItr(dataModel.getRoot().getName(), null, dataModel.getObjectTree(),
 					dataModel.getParsingMap());
-			
+
 			String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 
 			try {
 				ExpressionValidator.validateExprHasRootAndNotDisjoint(expression, result);
 			} catch (BasicParserException bpe) {
-				errorHandling(bpe,expression);
+				errorHandling(bpe, expression);
 				continue;
 			}
 
@@ -84,21 +91,21 @@ public class Main {
 			Scanner loop = new Scanner(System.in);
 			System.out.println("Do you wish to continue y/n");
 			String play = loop.nextLine();
-			//loop.close();
+			// loop.close();
 
 			if (!play.equalsIgnoreCase("y")) {
 				cont = false;
 				System.out.println("bye");
 				System.out.println("*************************************************************************\n");
 			}
-			
+
 		} while (cont);
 	}
-	
+
 	private static void errorHandling(BasicParserException bpe, String expression) {
 		System.out.println("Expression Error : " + bpe.getMessage());
 		expression = "r()";
-		Scanner resume= new Scanner(System.in);
+		Scanner resume = new Scanner(System.in);
 		System.out.println("Hit a key to continue");
 		String resumeKey = resume.nextLine().replaceAll("\\s", "");
 	}
