@@ -22,14 +22,14 @@ Node Tree<br>
  |--|--c<br>
  |--|--d<br>
  |--e<br>
- 
+
 **Validation Rules:**
 * Must validate the string expression - parenthesis must be balanced
   no missing open or closed brackets.
-* Each Node must be followed by open bracket thats eventually closed
+* Each Node must be followed by open bracket thats eventually closed.
 * No brackets not following a node i.e. belonging to a node.
-* Expression cannot represent a disjoint tree and / or have a missing Root Node
-* No cyclic relations. 
+* Expression cannot represent a disjoint tree and / or have a missing Root Node.
+* No cyclic relations.
 
 # This project is the solution for this code challenge, Basic Parser
 
@@ -38,7 +38,7 @@ https://github.com/Arshadee/basicparser.git
 
 ## Build / Compile and Run the application using my scripts
 In the main project folder, **basicParser**, run the following: on mac-os / unix operating systems</br>
-**chmod +rx buildRun.sh**  <i> - Initially to make executable</i></br> 
+**chmod +rx buildRun.sh**  <i> - Initially to make executable</i></br>
 **./buildRun.sh** <i> - To run script</i>
 
 ## Run the application only using my scripts
@@ -48,8 +48,8 @@ In the main project folder, **basicParser**, run the following: on mac-os / unix
 
 ## Build / Compile the application using maven
 In command-Line / term navigate to the main project folder, **basicParser**,
-and run : **mvn clean install** 
+and run : **mvn clean install**
 
 ## Run the application  
 In command-Line / term navigate to the main project folder, **basicParser**,
-and run : **java -jar target/basicParser.jar** 
+and run : **java -jar target/basicParser.jar**

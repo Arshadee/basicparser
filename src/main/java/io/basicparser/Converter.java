@@ -20,29 +20,29 @@ public class Converter {
 	 * children) it uses the Depth First Search algorithm - Recursion Implementation
 	 * 
 	 * @param name
-	 * @param pid
 	 * @param objectTree
 	 * @param treeMap
 	 */
-	public static void mapTreeToTreeObj(String name, String pid, ObjectTree objectTree,
+	public static void mapTreeToTreeObjRec(String name, ObjectTree objectTree,
 			Map<String, Node<String>> treeMap) {
-		// Populate object tree with node Id and node data fields
-		// from object map
+	   /* Populate object tree with node Id and node data fields
+		* from object map
+		*/
 		Node<String> node = treeMap.get(name);
 		objectTree.setId(node.getName());
-		// objectTree.setName(node.getName()); //eg Node Data field
 		objectTree.setName(node.getValue());
 
-		node.getChildren().parallelStream().forEachOrdered(c -> {
+		node.getChildren().parallelStream().forEachOrdered(nodeChild -> {
 			ObjectTree n = new ObjectTree();
 			n.setParent(objectTree);
 			objectTree.getChildren().add(n);
-			Node<String> nodeElement = (Node<String>) (c);
-			Optional<ObjectTree> cc = objectTree.getChildren().parallelStream().filter(d -> d.getName() == null)
+			Node<String> nodeElement = (Node<String>) (nodeChild);
+			Optional<ObjectTree> tree = objectTree.getChildren()
+					.parallelStream()
+					.filter(d -> d.getName() == null)
 					.findFirst();
-			mapTreeToTreeObj(nodeElement.getName(), name, cc.get(), treeMap);
+			mapTreeToTreeObjRec(nodeElement.getName(), tree.get(), treeMap);
 		});
-
 	}
 
 	/**
@@ -50,17 +50,16 @@ public class Converter {
 	 * children) it uses the Depth First Search algorithm - Iterative implmentation
 	 * 
 	 * @param name
-	 * @param pid
 	 * @param objectTree
 	 * @param treeMap
 	 */
-	public static void mapTreeToTreeObjItr(String name, String pid, ObjectTree objTree,
+	public static void mapTreeToTreeObjItr(String name, ObjectTree objTree,
 			Map<String, Node<String>> treeMap) {
 
-		Stack<Node<String>> stack = new Stack();
+		Stack<Node<String>> stack = new Stack<>();
 		Node<String> node = treeMap.get(name);
 		stack.push(node);
-		Stack<ObjectTree> stackObjTree = new Stack();
+		Stack<ObjectTree> stackObjTree = new Stack<>();
 		objTree.setName(node.getName());
 		objTree.setId(node.getName());
 		stackObjTree.push(objTree);

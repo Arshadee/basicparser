@@ -49,7 +49,7 @@ public class Parser {
             Map<String, Node<String>> map) {
         if (map.get(element) == null) {
            // map.put(element, new Node<String>(element));
-        	map.put(element, new Node<String>(element.charAt(0)+"",element));
+        	map.put(element, new Node<String>(element,element));
         }
     }
 
@@ -67,7 +67,7 @@ public class Parser {
         addMapElement(tmp1, parsingMap);
         if (expression.contains("->")) {
             tmp2 = st.nextElement().toString();
-            parsingMap.get(tmp1).getChildren().add(new Node<>(tmp2));
+            parsingMap.get(tmp1).getChildren().add(new Node<>(tmp2,tmp2));
             addMapElement(tmp2, parsingMap);
         }
     }

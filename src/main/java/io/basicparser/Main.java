@@ -33,11 +33,12 @@ public class Main {
 			example.append(sample);
 			example.append("    \n");
 			example.append("Note Expression Rules:\n");
-			example.append("* Expression must have a root node - node bracketsing the entire expression\n");
+			example.append("* Expression must have a root node - node bracketsing the entire expression.\n");
 			example.append("* Each node must be 1 char.\n");
-			example.append("* Each Node must be 1 char and followed by open bracket thats eventually closed\n");
+			example.append("* Each Node must be 1 char and followed by open bracket thats eventually closed.\n");
 			example.append("* Each bracket must belong o a node.\n");
-			example.append("* Expression cannot represent a disjoint tree\n");
+			example.append("* Expression cannot represent a disjoint tree.\n");
+			example.append("* No cyclic relations.\n");
 
 			System.out.println(example);
 			DataModel dataModel = new DataModel();
@@ -65,14 +66,17 @@ public class Main {
 			/*
 			 * Recursive DFS Call - to parse expression
 			 */
-			// Converter.mapTreeToTreeObj(dataModel.getRoot().getName(), null,
-			// dataModel.getObjectTree(),
-			// dataModel.getParsingMap());
+//			 Converter.mapTreeToTreeObjRec(
+//					 dataModel.getRoot().getName(), 
+//					 dataModel.getObjectTree(),
+//					 dataModel.getParsingMap());
 
-			/*
+		   /*
 		    *  Iterative DFS Call - to parse expression		
 		    */
-			Converter.mapTreeToTreeObjItr(dataModel.getRoot().getName(), null, dataModel.getObjectTree(),
+			Converter.mapTreeToTreeObjItr(
+					dataModel.getRoot().getName(),
+					dataModel.getObjectTree(),
 					dataModel.getParsingMap());
 
 			String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();

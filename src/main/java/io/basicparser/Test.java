@@ -3,7 +3,7 @@ package io.basicparser;
 import java.util.List;
 
 /**
- * Tesing Applcation - used to assist with debugging various components
+ * Testing Applcation - used to assist with debugging various components
  * of this application
  */
 import io.basicparser.exceptions.BasicParserException;
@@ -42,7 +42,7 @@ public class Test {
 		System.out.println();
 		// System.out.println("Map of Relations to be used to build Object Tree");
 		// Display.display(dataModel.getParsingMap());
-		Converter.mapTreeToTreeObj(dataModel.getRoot().getName(), null, dataModel.getObjectTree(),
+		Converter.mapTreeToTreeObjRec(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
 		// System.out.println();
 		// Display.display(dataModel.getObjectTree(), " ");
@@ -59,7 +59,5 @@ public class Test {
 		}
 		System.out.println("Object Tree");
 		System.out.println(result);
-
 	}
-
 }

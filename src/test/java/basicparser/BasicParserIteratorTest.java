@@ -15,7 +15,7 @@ import io.basicparser.ExpressionValidator;
 import io.basicparser.Parser;
 import io.basicparser.exceptions.BasicParserException;
 
-class BasicParserTest {
+class BasicParserIteratorTest {
 
 
 	@Test
@@ -31,7 +31,7 @@ class BasicParserTest {
 
 		dataModel = parser.parse(testExpression);
 
-		Converter.mapTreeToTreeObjRec(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+		Converter.mapTreeToTreeObjItr(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
 
 		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
@@ -51,7 +51,7 @@ class BasicParserTest {
 
 		dataModel = parser.parse(testExpression);
 
-		Converter.mapTreeToTreeObjRec(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+		Converter.mapTreeToTreeObjItr(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
 
 		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
@@ -71,7 +71,7 @@ class BasicParserTest {
 
 		dataModel = parser.parse(testExpression);
 
-		Converter.mapTreeToTreeObjRec(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+		Converter.mapTreeToTreeObjItr(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
 
 		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
@@ -91,7 +91,7 @@ class BasicParserTest {
 	    
 		dataModel = parser.parse(testExpression);
 		
-		Converter.mapTreeToTreeObjRec(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+		Converter.mapTreeToTreeObjItr(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
 
 		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
@@ -110,7 +110,7 @@ class BasicParserTest {
 	    
 		dataModel = parser.parse(testExpression);
 		
-		Converter.mapTreeToTreeObjRec(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+		Converter.mapTreeToTreeObjItr(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
 
 		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
@@ -203,7 +203,7 @@ class BasicParserTest {
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 			DataModel dataModel = new DataModel();
 			dataModel = parser.parse(testExpression);
-			Converter.mapTreeToTreeObjRec(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+			Converter.mapTreeToTreeObjItr(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 					dataModel.getParsingMap());
 			String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 			ExpressionValidator.validateExprHasRootAndNotDisjoint(testExpression, result);
@@ -225,7 +225,7 @@ class BasicParserTest {
 			DataModel dataModel = new DataModel();
 			dataModel = parser.parse(testExpression);
 
-			Converter.mapTreeToTreeObjRec(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+			Converter.mapTreeToTreeObjItr(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 					dataModel.getParsingMap());
 
 			String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
