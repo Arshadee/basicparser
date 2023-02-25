@@ -1,4 +1,4 @@
-package io.basicparser;
+package io.basicparser.dataobjects;
 
 import java.io.Serializable;
 import java.util.ArrayList;

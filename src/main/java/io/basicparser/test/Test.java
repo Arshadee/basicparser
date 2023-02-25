@@ -1,10 +1,19 @@
-package io.basicparser;
+package io.basicparser.test;
 
 import java.util.List;
 
+import io.basicparser.dataobjects.DataModel;
+import io.basicparser.display.Display;
+/**
+ * Testing Applcation - used to assist with debugging various components
+ * of this application
+ */
 import io.basicparser.exceptions.BasicParserException;
+import io.basicparser.parser.Converter;
+import io.basicparser.parser.Parser;
+import io.basicparser.validations.ExpressionValidator;
 
-public class TestIterator {
+public class Test {
 	static String tc1 = "r[r]\n" + "|--a[a]\n" + "|--|--b[b]\n" + "|--|--|--c[c]\n" + "|--|--|--d[d]\n" + "|--e[e]";
 
 	public static void main(String[] args) {
@@ -38,7 +47,7 @@ public class TestIterator {
 		System.out.println();
 		// System.out.println("Map of Relations to be used to build Object Tree");
 		// Display.display(dataModel.getParsingMap());
-		Converter.mapTreeToTreeObjItr(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+		Converter.mapTreeToTreeObjRec(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
 		// System.out.println();
 		// Display.display(dataModel.getObjectTree(), " ");
@@ -57,4 +66,3 @@ public class TestIterator {
 		System.out.println(result);
 	}
 }
-

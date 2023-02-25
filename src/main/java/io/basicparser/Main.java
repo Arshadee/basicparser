@@ -3,7 +3,12 @@ package io.basicparser;
 import java.util.List;
 import java.util.Scanner;
 
+import io.basicparser.dataobjects.DataModel;
+import io.basicparser.display.Display;
 import io.basicparser.exceptions.BasicParserException;
+import io.basicparser.parser.Converter;
+import io.basicparser.parser.Parser;
+import io.basicparser.validations.ExpressionValidator;
 
 /**
  * Main Application class - provides the user interface with this basicParsing

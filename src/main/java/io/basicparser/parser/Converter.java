@@ -1,4 +1,4 @@
-package io.basicparser;
+package io.basicparser.parser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,9 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Stack;
 import java.util.StringTokenizer;
+
+import io.basicparser.dataobjects.Node;
+import io.basicparser.dataobjects.ObjectTree;
 
 /**
  * Utility class - houses method(s) used to convert parsed string expression

@@ -1,4 +1,4 @@
-package io.basicparser;
+package io.basicparser.dataobjects;
 
 import java.util.ArrayList;
 import java.util.HashMap;

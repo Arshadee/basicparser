@@ -1,7 +1,10 @@
-package io.basicparser;
+package io.basicparser.display;
 
 import java.util.HashMap;
 import java.util.List;
+
+import io.basicparser.dataobjects.Node;
+import io.basicparser.dataobjects.ObjectTree;
 
 /**
  * View class - this class contains logic to display input and results

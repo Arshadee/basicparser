@@ -8,12 +8,12 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import io.basicparser.Converter;
-import io.basicparser.DataModel;
-import io.basicparser.Display;
-import io.basicparser.ExpressionValidator;
-import io.basicparser.Parser;
+import io.basicparser.dataobjects.DataModel;
+import io.basicparser.display.Display;
 import io.basicparser.exceptions.BasicParserException;
+import io.basicparser.parser.Converter;
+import io.basicparser.parser.Parser;
+import io.basicparser.validations.ExpressionValidator;
 
 class BasicParserTest {
 
