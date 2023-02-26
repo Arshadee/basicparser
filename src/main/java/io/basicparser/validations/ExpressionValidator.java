@@ -7,12 +7,14 @@ import io.basicparser.exceptions.BasicParserException;
 /**
  * This class uses the ExpressionChecker and BasicParserException classes to determine if a 
  * potential parsing exception need to be thrown and handled
+ * 
  * @author arshadmayet
  *
  */
 public class ExpressionValidator {
 	/**
      * This method validates that the brackets balance in the string expression
+     * 
      * @param expression
      * @throws IllegalArgumentException
      */
@@ -25,6 +27,7 @@ public class ExpressionValidator {
 	/**
 	 * This method validate thats the Node have correct opening and closing brackets and that each bracket
 	 * is not incorrectly placed
+	 * 
 	 * @param expression
 	 * @throws IllegalArgumentException
 	 */
@@ -35,6 +38,7 @@ public class ExpressionValidator {
 
 	/**
 	 * This method validate that the string expression has a root node and does not represent a disjointed tree
+	 * 
 	 * @param expression
 	 * @param result
 	 * @throws IllegalArgumentException

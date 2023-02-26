@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 /**
  * This class houses the string expression formatting rules
  * required for parsing and is used by the Validator class
+ * 
  * @author arshadmayet
  *
  */
@@ -13,8 +14,9 @@ public class ExpressionChecker {
 
 	/**
      * This method initiates check bracket balance of the input expression
+     * 
      * @param expression
-     * @return
+     * @return boalean result
      */
     public static boolean checkBraces(List<String >chars){
       boolean result = chkBracketBalance(chars,0,0,"-");
@@ -25,11 +27,12 @@ public class ExpressionChecker {
     /**
      * This method checks if brackets of the expression has correctly balanced brackets
      * so that the expression may be parsed
+     * 
      * @param chars
      * @param index
      * @param noOfOpenBrackets
      * @param lastBracket
-     * @return
+     * @return boalean result
      */
     private static boolean chkBracketBalance(List<String> chars,int index, int noOfOpenBrackets, String lastBracket){
     	if(index==chars.size()) {
@@ -47,8 +50,9 @@ public class ExpressionChecker {
     
     /**
      * This method initiates the String Expression validation check
+     * 
      * @param expression
-     * @return
+     * @returnboalean result
      */
      public static boolean checkValidExpression(List<String> expression) {
  	      boolean result = checkNodeNBrackets(expression);
@@ -58,8 +62,9 @@ public class ExpressionChecker {
     /**
      * This method performs the String Expresion validation check scanning each char, checking nodes and braces 
      * are in correct places /order
+     * 
      * @param chars
-     * @return
+     * @return boalean result
      */
 	private static boolean checkNodeNBrackets(List<String> chars) {
 		if(chars.size()<=1) return false;
@@ -88,16 +93,21 @@ public class ExpressionChecker {
 	/**
 	 * This method checks if the string expression has a root node or that it does not represent a dis-jointed tree
 	 * checks the string expression against the result
+	 * 
 	 * @param expression
 	 * @param result
-	 * @return
+	 * @return boalean result
 	 */
 	public static boolean checkForRootNodeAndDisjointTree(String expression,String result) {
 		return expression.charAt(0) == result.charAt(0);
 	}
 	
 	/**
+	 * This method checks for any cyclic relationship the expression string
+	 * i.e. parents and any of the sub nodes may not have the same name
 	 * 
+	 * @param list of tokens from expression
+	 * @return boolean result
 	 */
 	public static boolean checkForNoCyclicRelation(List<String> tokens) {
 		List<String> elements = tokens.stream()
