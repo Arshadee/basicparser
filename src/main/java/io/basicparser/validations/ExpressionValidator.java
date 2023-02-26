@@ -17,7 +17,7 @@ public class ExpressionValidator {
      * This method validates that the brackets balance in the string expression
      * 
      * @param expression
-     * @throws IllegalArgumentException
+     * @throws BasicParserException
      */
 	public static void validateExprBalanceBrace(List<String> expression) throws BasicParserException{
 		if (!ExpressionChecker.checkBraces(expression))
@@ -30,7 +30,7 @@ public class ExpressionValidator {
 	 * is not incorrectly placed
 	 * 
 	 * @param expression
-	 * @throws IllegalArgumentException
+	 * @throws BasicParserException
 	 */
 	public static void validateExprMisplacedBraceNode(List<String> expression) throws BasicParserException{
 		if (!ExpressionChecker.checkValidExpression(expression))
@@ -42,7 +42,7 @@ public class ExpressionValidator {
 	 * 
 	 * @param expression
 	 * @param result
-	 * @throws IllegalArgumentException
+	 * @throws BasicParserException
 	 */
 	public static void validateExprHasRootAndNotDisjoint(String expression, String result)
 			throws BasicParserException{
@@ -50,6 +50,12 @@ public class ExpressionValidator {
 			throw new BasicParserException("Expression does not have a root node or represents a dis-joint tree");
 	}
 	
+	/**
+	 * This method validate that the string expression does not have a cyclic relation
+	 * 
+	 * @param expression
+	 * @throws BasicParserException
+	 */
 	public static void validateExprHasCyclicRelation(List<String> expression) throws BasicParserException {
 		Set<String> difference = ExpressionChecker.checkForNoCyclicRelation(expression);
 		if(!difference.isEmpty()) {
