@@ -22,7 +22,6 @@ public class ExpressionValidator {
 	public static void validateExprBalanceBrace(List<String> expression) throws BasicParserException{
 		if (!ExpressionChecker.checkBraces(expression))
 			throw new BasicParserException("Parentesis '(' , ')'  mismatched");
-
 	}
 
 	/**
