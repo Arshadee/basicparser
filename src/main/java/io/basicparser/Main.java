@@ -98,7 +98,6 @@ public class Main {
 			dataModel = parser.parse(tokens);
 			System.out.println();
 
-
 			converter.mapTreeToTreeObj(
 					dataModel.getRoot().getName(),
 					dataModel.getObjectTree(),

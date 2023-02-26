@@ -1,6 +1,8 @@
 package io.basicparser.validations;
 
-import java.util.List;import java.util.stream.Collector;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -16,7 +18,7 @@ public class ExpressionChecker {
      * This method initiates check bracket balance of the input expression
      * 
      * @param expression
-     * @return boalean result
+     * @return boolean result
      */
     public static boolean checkBraces(List<String >chars){
       boolean result = chkBracketBalance(chars,0,0,"-");
@@ -32,7 +34,7 @@ public class ExpressionChecker {
      * @param index
      * @param noOfOpenBrackets
      * @param lastBracket
-     * @return boalean result
+     * @return boolean result
      */
     private static boolean chkBracketBalance(List<String> chars,int index, int noOfOpenBrackets, String lastBracket){
     	if(index==chars.size()) {
@@ -52,7 +54,7 @@ public class ExpressionChecker {
      * This method initiates the String Expression validation check
      * 
      * @param expression
-     * @returnboalean result
+     * @return boalean result
      */
      public static boolean checkValidExpression(List<String> expression) {
  	      boolean result = checkNodeNBrackets(expression);
@@ -64,7 +66,7 @@ public class ExpressionChecker {
      * are in correct places /order
      * 
      * @param chars
-     * @return boalean result
+     * @return boolean result
      */
 	private static boolean checkNodeNBrackets(List<String> chars) {
 		if(chars.size()<=1) return false;
@@ -96,7 +98,7 @@ public class ExpressionChecker {
 	 * 
 	 * @param expression
 	 * @param result
-	 * @return boalean result
+	 * @return boolean result
 	 */
 	public static boolean checkForRootNodeAndDisjointTree(String expression,String result) {
 		return expression.charAt(0) == result.charAt(0);
@@ -107,20 +109,21 @@ public class ExpressionChecker {
 	 * i.e. parents and any of the sub nodes may not have the same name
 	 * 
 	 * @param list of tokens from expression
-	 * @return boolean result
+	 * @return Set of Differences
 	 */
-	public static boolean checkForNoCyclicRelation(List<String> tokens) {
+	public static Set<String> checkForNoCyclicRelation(List<String> tokens) {
+		
 		List<String> elements = tokens.stream()
 				.filter(x->(!x.equals(")")))
 				.filter(x->(!x.equals("(")))
 				.collect(Collectors.toList());
 		
-		List<String> distinctElements = tokens.stream()
-				.filter(x->(!x.equals(")")))
-				.filter(x->(!x.equals("(")))
-				.distinct()
-				.collect(Collectors.toList());
 		
-		return elements.size() == distinctElements.size();
+		Set<String> items = new HashSet<>();
+		Set<String> difference = elements.stream()
+								.filter(n -> !items.add(n))
+								.collect(Collectors.toSet());
+		
+		return  difference;
 	}
 }

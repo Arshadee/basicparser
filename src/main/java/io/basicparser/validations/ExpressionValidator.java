@@ -1,6 +1,7 @@
 package io.basicparser.validations;
 
 import java.util.List;
+import java.util.Set;
 
 import io.basicparser.exceptions.BasicParserException;
 
@@ -50,8 +51,9 @@ public class ExpressionValidator {
 	}
 	
 	public static void validateExprHasCyclicRelation(List<String> expression) throws BasicParserException {
-		if(!ExpressionChecker.checkForNoCyclicRelation(expression)) {
-			throw new BasicParserException("Expression has cyclic relationship");
+		Set<String> difference = ExpressionChecker.checkForNoCyclicRelation(expression);
+		if(!difference.isEmpty()) {
+			throw new BasicParserException("Expression has cyclic relationship - with element(s)"+difference);
 		}
 	}
 }

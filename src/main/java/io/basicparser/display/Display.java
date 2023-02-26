@@ -3,13 +3,12 @@ package io.basicparser.display;
 import java.util.HashMap;
 import java.util.List;
 
-import io.basicparser.dataobjects.Node;
-import io.basicparser.dataobjects.ObjectTree;
 import io.basicparser.dataobjectsInterfaces.INode;
 import io.basicparser.dataobjectsInterfaces.IObjectTree;
 
 /**
  * View class - this class contains logic to display input and results
+ * 
  * @author Arshad
  */
 public class Display {
@@ -17,7 +16,7 @@ public class Display {
 	/**
 	 * This method displays list of node from expression string
 	 * 
-	 * @param alist
+	 * @param a List
 	 */
 	public static void displayNodelist(List<INode<String>> alist) {
 		for (int i = 0; i < alist.size(); i++) {
@@ -51,9 +50,7 @@ public class Display {
 			IObjectTree child = objectTree.getChildren().get(i);
 			// display(child,tab.replaceAll(">","|")+"->");
 			display(child, tab + "|--");
-
 		}
-
 	}
 
 	/**
