@@ -13,7 +13,7 @@ import io.basicparser.display.Display;
 import io.basicparser.exceptions.BasicParserException;
 import io.basicparser.parser.interfaces.IConverter;
 import io.basicparser.parser.Parser;
-import io.basicparser.parser.ConverterRecImpl;
+import io.basicparser.parser.ConverterRecursiveImpl;
 import io.basicparser.parser.interfaces.IParser;
 import io.basicparser.validations.ExpressionValidator;
 
@@ -24,7 +24,7 @@ class BasicParserTest {
 	void testCase1Success() throws BasicParserException {
 		
 		String testExpression = "r(a(b(c()d()))e())";
-		IConverter converter = new ConverterRecImpl();
+		IConverter converter = new ConverterRecursiveImpl();
 
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 
@@ -49,7 +49,7 @@ class BasicParserTest {
 		String testExpression = "r(a(b()c())d(e())g(h(i(j()k()l())))m(n())o())";
 		DataModel dataModel = new DataModel();
 		IParser parser = new Parser();
-		IConverter converter = new ConverterRecImpl();
+		IConverter converter = new ConverterRecursiveImpl();
 		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
@@ -72,7 +72,7 @@ class BasicParserTest {
 		String testExpression = "r(a()b()c()d(e()f()g(h()i(j()))))";
 		DataModel dataModel = new DataModel();
 		IParser parser = new Parser();
-		IConverter converter = new ConverterRecImpl();
+		IConverter converter = new ConverterRecursiveImpl();
 		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
@@ -94,7 +94,7 @@ class BasicParserTest {
 		String testExpression = "r(a(b()c(d()e()f(g()h()i()j(k()l()m()n(v()s()w()t())o(x()u()B(*())y()))))))";
 		DataModel dataModel = new DataModel();
 		IParser parser = new Parser();
-		IConverter converter = new ConverterRecImpl();
+		IConverter converter = new ConverterRecursiveImpl();
 		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
@@ -115,7 +115,7 @@ class BasicParserTest {
 		String testExpression = "r(a(b(c(d())e())f())g())";
 		DataModel dataModel = new DataModel();
 		IParser parser = new Parser();
-		IConverter converter = new ConverterRecImpl();
+		IConverter converter = new ConverterRecursiveImpl();
 		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
@@ -136,7 +136,7 @@ class BasicParserTest {
 	void testCase6ExceptionIncorrectParenthesisBalance() {
 		
 		String testExpression = "r(a(b()c())d(e())g(h(i(j()k()l()))m(n())o())"; // error brackt impbalance
-		IConverter converter = new ConverterRecImpl();
+		IConverter converter = new ConverterRecursiveImpl();
 		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
@@ -153,7 +153,7 @@ class BasicParserTest {
 	@Test
 	void testCase7ExceptionIncorrectExpression() {
 		String testExpression = "r";
-		IConverter converter = new ConverterRecImpl();
+		IConverter converter = new ConverterRecursiveImpl();
 		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
@@ -187,7 +187,7 @@ class BasicParserTest {
 	void testCase9ExceptionIncorrectExpression() {
 		
 		String testExpression = "r(a(b(c()d()))e()()";
-		IConverter converter = new ConverterRecImpl();
+		IConverter converter = new ConverterRecursiveImpl();
 		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
@@ -205,7 +205,7 @@ class BasicParserTest {
 	void testCase10ExceptionIncorrectExpression() {
 		
 		String testExpression = "r(a(b(c()d()))e(())";
-		IConverter converter = new ConverterRecImpl();
+		IConverter converter = new ConverterRecursiveImpl();
 		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
@@ -223,7 +223,7 @@ class BasicParserTest {
 	void testCase11ExceptionIncorrectExpressionDisjointTree() {
 		String testExpression = "a()b(c()d())e(f())";
 		IParser parser = new Parser();
-		IConverter converter = new ConverterRecImpl();
+		IConverter converter = new ConverterRecursiveImpl();
 		
 
 		Exception exception = assertThrows(BasicParserException.class, () -> {
@@ -247,7 +247,7 @@ class BasicParserTest {
 		
 		String testExpression = "r(a()b()c(d()e()))x(h()i())";
 		IParser parser = new Parser();
-		IConverter converter = new ConverterRecImpl();
+		IConverter converter = new ConverterRecursiveImpl();
 		
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 			DataModel dataModel = new DataModel();

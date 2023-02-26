@@ -9,7 +9,7 @@ import io.basicparser.display.Display;
  * of this application
  */
 import io.basicparser.exceptions.BasicParserException;
-import io.basicparser.parser.ConverterRecImpl;
+import io.basicparser.parser.ConverterRecursiveImpl;
 import io.basicparser.parser.Parser;
 import io.basicparser.parser.interfaces.IConverter;
 import io.basicparser.validations.ExpressionValidator;
@@ -20,7 +20,7 @@ public class Test {
 	public static void main(String[] args) {
 		DataModel dataModel = new DataModel();
 		Parser parser = new Parser();
-		IConverter converter = new ConverterRecImpl();
+		IConverter converter = new ConverterRecursiveImpl();
 
 		// String s ="r(a(b(c()d()))e())";
 		// String s = "r(a(b()c())d(e())g(h(i(j()k()l())))m(n())o())";

@@ -14,6 +14,23 @@ import io.basicparser.parser.interfaces.IConverter;
 public class ConverterIteratorImpl implements IConverter{
 	
 
+	
+	
+	private final static String ALGORITH_NAME="ITERATIVE DFS";
+	
+	/**
+	 * Overrided from IConverter Interface
+	 * 
+	 * This is a simple getter method that return the this implementation
+	 * name
+	 * 
+	 * return algorithm name from static constant
+	 */
+	@Override
+	public String getAlgorthmName() {
+		return ALGORITH_NAME;
+	}
+	
 
 	/**
 	 * Overrided from IConverter Interface

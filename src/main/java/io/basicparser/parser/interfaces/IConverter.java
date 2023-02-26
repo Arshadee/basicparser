@@ -10,11 +10,10 @@ import io.basicparser.dataobjects.ObjectTree;
 
 public interface IConverter {
 	
+	public String getAlgorthmName();
 	public void mapTreeToTreeObj(String name, ObjectTree objectTree,
 			Map<String, Node<String>> treeMap);
-//	public void mapTreeToTreeObjItr(String name, ObjectTree objTree,
-//			Map<String, Node<String>> treeMap);
-//	public List<String> mapToStringTokenList(String expression);
+
 	
 	/**
 	 * Overrided from IConverter Interface

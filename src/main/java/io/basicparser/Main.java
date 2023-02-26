@@ -7,9 +7,10 @@ import io.basicparser.dataobjects.DataModel;
 import io.basicparser.display.Display;
 import io.basicparser.exceptions.BasicParserException;
 import io.basicparser.parser.ConverterIteratorImpl;
-import io.basicparser.parser.ConverterRecImpl;
+import io.basicparser.parser.ConverterRecursiveImpl;
 import io.basicparser.parser.Parser;
 import io.basicparser.parser.interfaces.IConverter;
+import io.basicparser.parser.interfaces.IParser;
 import io.basicparser.validations.ExpressionValidator;
 
 /**
@@ -29,7 +30,7 @@ public class Main {
 		/*
 		 *  To use the Recursive DFS Algorithm
 		 */
-		IConverter converter = new ConverterRecImpl();
+		IConverter converter;// = new ConverterRecursiveImpl();
 		
 		/*
 		 *  To use the Iterative DFS Algorithm
@@ -39,7 +40,7 @@ public class Main {
 		do {
 			// String sample = "r[r]\n" + "|--a[a]\n" + "|--|--b[b]\n" + "|--|--|--c[c]\n" +
 			// "|--|--|--d[d]\n" + "|--e[e]\n";
-			String sample = "r[r]\n" + "|--a[a]\n" + "|--b[b]\n" + "|--|--c[c]\n" + "|--|--d[d]\n";
+			String sample = "Example\nr[r]\n" + "|--a[a]\n" + "|--b[b]\n" + "|--|--c[c]\n" + "|--|--d[d]\nEndofExample\n";
 
 			StringBuilder example = new StringBuilder();
 			example.append("*************************************************************************\n");
@@ -51,6 +52,9 @@ public class Main {
 			example.append("Object tree\n");
 			example.append(sample);
 			example.append("    \n");
+			example.append("By default the Recursive DFS Algorithm is used\n");
+			example.append("To use the Iterative DFS Algorithm just type ITR: before expression String.\n");
+			example.append("    \n");
 			example.append("Note Expression Rules:\n");
 			example.append("* Expression must have a root node - node bracketsing the entire expression.\n");
 			example.append("* Each node must be 1 char.\n");
@@ -61,13 +65,24 @@ public class Main {
 
 			System.out.println(example);
 			DataModel dataModel = new DataModel();
-			Parser parser = new Parser();
+			IParser parser = new Parser();
 
 			@SuppressWarnings("resource")
 			Scanner myObj = new Scanner(System.in);
 			System.out.println("Enter expression:");
 			String expression = myObj.nextLine().replaceAll("\\s", "");
-
+			
+			converter = new ConverterRecursiveImpl();
+			if(expression.toLowerCase().contains("itr:")) {
+				converter = new ConverterIteratorImpl();
+			}
+			
+			if(expression.contains(":")) {
+				expression = expression.substring(expression.indexOf(":")+1);
+				expression = expression.trim();
+				System.out.println(expression);
+			}
+		
 			List<String> tokens = converter.mapToStringTokenList(expression);
 
 			try {
@@ -83,9 +98,6 @@ public class Main {
 			System.out.println();
 
 
-		   /*
-		    *  Iterative DFS Call - to parse expression		
-		    */
 			converter.mapTreeToTreeObj(
 					dataModel.getRoot().getName(),
 					dataModel.getObjectTree(),
@@ -101,6 +113,7 @@ public class Main {
 			}
 
 			System.out.println("Object Tree - Result:");
+			System.out.println("Algorithm used "+converter.getAlgorthmName());
 			System.out.println(result);
 
 			@SuppressWarnings("resource")
