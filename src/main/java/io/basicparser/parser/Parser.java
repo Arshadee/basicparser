@@ -8,13 +8,15 @@ import java.util.StringTokenizer;
 
 import io.basicparser.dataobjects.DataModel;
 import io.basicparser.dataobjects.Node;
+import io.basicparser.parser.interfaces.IParser;
 
 /**
  * Utility Class that houses methods used to Parse the string expression
+ * 
  * @author Arshad
  * 
  */
-public class Parser {
+public class Parser implements IParser{
  
     public Parser() {}
        
@@ -23,7 +25,7 @@ public class Parser {
      * off node String elements in the dataModel parsed from the expressions
      * @param dataModel
      */
-    private  DataModel buildNodeStr(DataModel dataModel) {
+    private DataModel buildNodeStr(DataModel dataModel) {
         String tmp;
         String back = dataModel.getParsingStack().pop();
         String front;
@@ -70,18 +72,21 @@ public class Parser {
         addMapElement(tmp1, parsingMap);
         if (expression.contains("->")) {
             tmp2 = st.nextElement().toString();
-            parsingMap.get(tmp1).getChildren().add(new Node<>(tmp2,tmp2));
+            parsingMap.get(tmp1).getChildren().add(new Node<>(tmp2,tmp1));
             addMapElement(tmp2, parsingMap);
         }
     }
    
 
     /**
+     * Overridden from IParser Interface
+     *  
      * This method builds the stack in the dataModel from the expression string
      * and uses the stack to build a object map of (key) parent and (value) children 
-     * @param s
-     * @return
+     * @param String expression
+     * @return DataModel instance
      */
+    @Override
     public DataModel parse(String expression) {
     	DataModel dataModel = new DataModel();
         for (int i = 0; i < expression.length(); i++) {
@@ -95,6 +100,15 @@ public class Parser {
         return dataModel;
     }
     
+    /**
+     * Overridden and overloaded from IParser Interface
+     * 
+     * This method builds the stack in the dataModel from the expression string
+     * and uses the stack to build a object map of (key) parent and (value) children 
+     * @param String List expression
+     * @return DataModel instance
+     */
+    @Override
     public DataModel parse(List<String> expression) {
     	DataModel dataModel = new DataModel();
         for (int i = 0; i < expression.size(); i++) {

@@ -6,8 +6,10 @@ import java.util.Scanner;
 import io.basicparser.dataobjects.DataModel;
 import io.basicparser.display.Display;
 import io.basicparser.exceptions.BasicParserException;
-import io.basicparser.parser.Converter;
+import io.basicparser.parser.ConverterIteratorImpl;
+import io.basicparser.parser.ConverterRecImpl;
 import io.basicparser.parser.Parser;
+import io.basicparser.parser.interfaces.IConverter;
 import io.basicparser.validations.ExpressionValidator;
 
 /**
@@ -21,7 +23,19 @@ import io.basicparser.validations.ExpressionValidator;
 public class Main {
 
 	public static void main(String[] args) throws IllegalArgumentException {
+		
 		boolean cont = true;
+		
+		/*
+		 *  To use the Recursive DFS Algorithm
+		 */
+		IConverter converter = new ConverterRecImpl();
+		
+		/*
+		 *  To use the Iterative DFS Algorithm
+		 */
+		//IConverter converter = new ConverterIteratorImpl();
+		
 		do {
 			// String sample = "r[r]\n" + "|--a[a]\n" + "|--|--b[b]\n" + "|--|--|--c[c]\n" +
 			// "|--|--|--d[d]\n" + "|--e[e]\n";
@@ -54,7 +68,7 @@ public class Main {
 			System.out.println("Enter expression:");
 			String expression = myObj.nextLine().replaceAll("\\s", "");
 
-			List<String> tokens = Converter.mapToStringTokenList(expression);
+			List<String> tokens = converter.mapToStringTokenList(expression);
 
 			try {
 				ExpressionValidator.validateExprBalanceBrace(tokens);
@@ -68,18 +82,11 @@ public class Main {
 			dataModel = parser.parse(tokens);
 			System.out.println();
 
-			/*
-			 * Recursive DFS Call - to parse expression
-			 */
-//			 Converter.mapTreeToTreeObjRec(
-//					 dataModel.getRoot().getName(), 
-//					 dataModel.getObjectTree(),
-//					 dataModel.getParsingMap());
 
 		   /*
 		    *  Iterative DFS Call - to parse expression		
 		    */
-			Converter.mapTreeToTreeObjItr(
+			converter.mapTreeToTreeObj(
 					dataModel.getRoot().getName(),
 					dataModel.getObjectTree(),
 					dataModel.getParsingMap());

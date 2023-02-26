@@ -9,8 +9,9 @@ import io.basicparser.display.Display;
  * of this application
  */
 import io.basicparser.exceptions.BasicParserException;
-import io.basicparser.parser.Converter;
+import io.basicparser.parser.ConverterRecImpl;
 import io.basicparser.parser.Parser;
+import io.basicparser.parser.interfaces.IConverter;
 import io.basicparser.validations.ExpressionValidator;
 
 public class Test {
@@ -19,6 +20,7 @@ public class Test {
 	public static void main(String[] args) {
 		DataModel dataModel = new DataModel();
 		Parser parser = new Parser();
+		IConverter converter = new ConverterRecImpl();
 
 		// String s ="r(a(b(c()d()))e())";
 		// String s = "r(a(b()c())d(e())g(h(i(j()k()l())))m(n())o())";
@@ -33,7 +35,7 @@ public class Test {
 		// String s = "r(a()b()c(d()e()))x(h()i())";
 
 		System.out.println(s);
-		List<String> tokens = Converter.mapToStringTokenList(s);
+		List<String> tokens = converter.mapToStringTokenList(s);
 
 		try {
 			ExpressionValidator.validateExprBalanceBrace(tokens);
@@ -47,7 +49,7 @@ public class Test {
 		System.out.println();
 		// System.out.println("Map of Relations to be used to build Object Tree");
 		// Display.display(dataModel.getParsingMap());
-		Converter.mapTreeToTreeObjRec(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
 		// System.out.println();
 		// Display.display(dataModel.getObjectTree(), " ");
