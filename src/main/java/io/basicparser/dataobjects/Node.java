@@ -3,11 +3,13 @@ package io.basicparser.dataobjects;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.basicparser.dataobjectsInterfaces.INode;
+
 /**
  * Model class - specifically used to store node data parsed from string expression
  * @author Arshad
  */
-public class Node<T> {
+public class Node<T> implements INode<T>{
     private Node<T> parent;
     private String name;
     private T value;

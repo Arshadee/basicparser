@@ -8,7 +8,9 @@ import java.util.StringTokenizer;
 
 import io.basicparser.dataobjects.DataModel;
 import io.basicparser.dataobjects.Node;
-import io.basicparser.parser.interfaces.IParser;
+import io.basicparser.dataobjectsInterfaces.IDataModel;
+import io.basicparser.dataobjectsInterfaces.INode;
+import io.basicparser.parserinterfaces.IParser;
 
 /**
  * Utility Class that houses methods used to Parse the string expression
@@ -25,7 +27,7 @@ public class Parser implements IParser{
      * off node String elements in the dataModel parsed from the expressions
      * @param dataModel
      */
-    private DataModel buildNodeStr(DataModel dataModel) {
+    private IDataModel buildNodeStr(IDataModel dataModel) {
         String tmp;
         String back = dataModel.getParsingStack().pop();
         String front;
@@ -51,7 +53,7 @@ public class Parser implements IParser{
      * @param map
      */
     private static void addMapElement(String element,
-            Map<String, Node<String>> map) {
+            Map<String, INode<String>> map) {
         if (map.get(element) == null) {
            // map.put(element, new Node<String>(element));
         	map.put(element, new Node<String>(element,element));
@@ -65,7 +67,7 @@ public class Parser implements IParser{
      * @param parsingMap
      */
     private static void buildMap(String expression,
-        HashMap<String, Node<String>> parsingMap) {
+        HashMap<String, INode<String>> parsingMap) {
         StringTokenizer st = new StringTokenizer(expression, "->");
         String tmp1 = st.nextElement().toString();
         String tmp2 = "";
@@ -87,8 +89,8 @@ public class Parser implements IParser{
      * @return DataModel instance
      */
     @Override
-    public DataModel parse(String expression) {
-    	DataModel dataModel = new DataModel();
+    public IDataModel parse(String expression) {
+    	IDataModel dataModel = new DataModel();
         for (int i = 0; i < expression.length(); i++) {
             if (expression.charAt(i) == ')') {
             	dataModel = buildNodeStr(dataModel);
@@ -109,8 +111,8 @@ public class Parser implements IParser{
      * @return DataModel instance
      */
     @Override
-    public DataModel parse(List<String> expression) {
-    	DataModel dataModel = new DataModel();
+    public IDataModel parse(List<String> expression) {
+    	IDataModel dataModel = new DataModel();
         for (int i = 0; i < expression.size(); i++) {
             if (expression.get(i).equals(")")){
             	dataModel = buildNodeStr(dataModel);

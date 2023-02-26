@@ -3,11 +3,12 @@ package io.basicparser.test;
 import java.util.List;
 
 import io.basicparser.dataobjects.DataModel;
+import io.basicparser.dataobjectsInterfaces.IDataModel;
 import io.basicparser.display.Display;
 import io.basicparser.exceptions.BasicParserException;
-import io.basicparser.parser.interfaces.IConverter;
-import io.basicparser.parser.interfaces.IParser;
 import io.basicparser.parser.Parser;
+import io.basicparser.parserinterfaces.IConverter;
+import io.basicparser.parserinterfaces.IParser;
 import io.basicparser.parser.ConverterIteratorImpl;
 import io.basicparser.validations.ExpressionValidator;
 
@@ -15,7 +16,7 @@ public class TestIterator {
 	static String tc1 = "r[r]\n" + "|--a[a]\n" + "|--|--b[b]\n" + "|--|--|--c[c]\n" + "|--|--|--d[d]\n" + "|--e[e]";
 
 	public static void main(String[] args) {
-		DataModel dataModel = new DataModel();
+		IDataModel dataModel = new DataModel();
 		IParser parser = new Parser();
 		IConverter converter = new ConverterIteratorImpl();
 

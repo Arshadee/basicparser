@@ -9,12 +9,13 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import io.basicparser.dataobjects.DataModel;
+import io.basicparser.dataobjectsInterfaces.IDataModel;
 import io.basicparser.display.Display;
 import io.basicparser.exceptions.BasicParserException;
-import io.basicparser.parser.interfaces.IParser;
-import io.basicparser.parser.interfaces.IConverter;
 import io.basicparser.parser.ConverterIteratorImpl;
 import io.basicparser.parser.Parser;
+import io.basicparser.parserinterfaces.IConverter;
+import io.basicparser.parserinterfaces.IParser;
 import io.basicparser.validations.ExpressionValidator;
 
 class BasicParserIteratorTest {
@@ -26,7 +27,7 @@ class BasicParserIteratorTest {
 		IConverter converter = new ConverterIteratorImpl();
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 
-		DataModel dataModel = new DataModel();
+		IDataModel dataModel = new DataModel();
 		IParser parser = new Parser();
 
 		ExpressionValidator.validateExprBalanceBrace(tokens);
@@ -46,7 +47,7 @@ class BasicParserIteratorTest {
 	void testCase2Success() throws BasicParserException {
 		
 		String testExpression = "r(a(b()c())d(e())g(h(i(j()k()l())))m(n())o())";
-		DataModel dataModel = new DataModel();
+		IDataModel dataModel = new DataModel();
 		IParser parser = new Parser();
 		IConverter converter = new ConverterIteratorImpl();
 		
@@ -68,7 +69,7 @@ class BasicParserIteratorTest {
 	@Test
 	void testCase3Success() throws BasicParserException {
 		String testExpression = "r(a()b()c()d(e()f()g(h()i(j()))))";
-		DataModel dataModel = new DataModel();
+		IDataModel dataModel = new DataModel();
 		IParser parser = new Parser();
 		IConverter converter = new ConverterIteratorImpl();
 		
@@ -90,7 +91,7 @@ class BasicParserIteratorTest {
 	@Test
 	void testCase4Success() throws BasicParserException {
 		String testExpression = "r(a(b()c(d()e()f(g()h()i()j(k()l()m()n(v()s()w()t())o(x()u()B(*())y()))))))";
-		DataModel dataModel = new DataModel();
+		IDataModel dataModel = new DataModel();
 		IParser parser = new Parser();
 		IConverter converter = new ConverterIteratorImpl();
 	
@@ -114,7 +115,7 @@ class BasicParserIteratorTest {
 		String testExpression = "r(a(b(c(d())e())f())g())";
 		IParser parser = new Parser();
 		IConverter converter = new ConverterIteratorImpl();
-		DataModel dataModel = new DataModel();
+		IDataModel dataModel = new DataModel();
 		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
@@ -226,7 +227,7 @@ class BasicParserIteratorTest {
 		IParser parser = new Parser();
 
 		Exception exception = assertThrows(BasicParserException.class, () -> {
-			DataModel dataModel = new DataModel();
+			IDataModel dataModel = new DataModel();
 			dataModel = parser.parse(testExpression);
 			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 					dataModel.getParsingMap());
@@ -250,7 +251,7 @@ class BasicParserIteratorTest {
 		
 
 		Exception exception = assertThrows(BasicParserException.class, () -> {
-			DataModel dataModel = new DataModel();
+			IDataModel dataModel = new DataModel();
 			dataModel = parser.parse(testExpression);
 
 			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),

@@ -9,7 +9,8 @@ import java.util.StringTokenizer;
 
 import io.basicparser.dataobjects.Node;
 import io.basicparser.dataobjects.ObjectTree;
-import io.basicparser.parser.interfaces.IConverter;
+import io.basicparser.dataobjectsInterfaces.INode;
+import io.basicparser.parserinterfaces.IConverter;
 
 public class ConverterIteratorImpl implements IConverter{
 	
@@ -21,7 +22,7 @@ public class ConverterIteratorImpl implements IConverter{
 	/**
 	 * Overrided from IConverter Interface
 	 * 
-	 * This is a simple getter method that return the this implementation
+	 * This is a simple getter method that return the thiIs implementation
 	 * name
 	 * 
 	 * return algorithm name from static constant
@@ -43,20 +44,22 @@ public class ConverterIteratorImpl implements IConverter{
 	 * @param treeMap
 	 */
 	@Override
-	public void mapTreeToTreeObj(String name, ObjectTree objTree,
-			Map<String, Node<String>> treeMap) {
+//	public void mapTreeToTreeObj(String name, ObjectTree objTree,
+//			Map<String, INode<String>> treeMap) {
+	public void mapTreeToTreeObj(String name, ObjectTree objectTree, Map<String, INode<String>> treeMap) {
+		
 
-		Stack<Node<String>> stack = new Stack<>();
-		Node<String> node = treeMap.get(name);
+		Stack<INode<String>> stack = new Stack<>();
+		INode<String> node = treeMap.get(name);
 		stack.push(node);
 		Stack<ObjectTree> stackObjTree = new Stack<>();
-		objTree.setName(node.getName());
-		objTree.setId(node.getName());
-		stackObjTree.push(objTree);
+		objectTree.setName(node.getName());
+		objectTree.setId(node.getName());
+		stackObjTree.push(objectTree);
 
 		while (!stack.isEmpty()) {
 			node = stack.pop();
-			objTree = stackObjTree.pop();
+			objectTree = stackObjTree.pop();
 			node = treeMap.get(node.getName());
 
 			for (int i = 0; i < node.getChildren().size(); i++) {
@@ -65,11 +68,18 @@ public class ConverterIteratorImpl implements IConverter{
 				ObjectTree n = new ObjectTree();
 				n.setName(child.getName());
 				n.setId(child.getName());
-				n.setParent(objTree);
-				objTree.getChildren().add(n);
+				n.setParent(objectTree);
+				objectTree.getChildren().add(n);
 				stackObjTree.push(n);
 			}
 		}
 	}
+
+
+	//@Override
+	//public void mapTreeToTreeObj(String name, ObjectTree objectTree, Map<String, INode<String>> treeMap) {
+		// TODO Auto-generated method stub
+		
+	//}
 	
 }

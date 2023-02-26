@@ -9,7 +9,8 @@ import java.util.StringTokenizer;
 
 import io.basicparser.dataobjects.Node;
 import io.basicparser.dataobjects.ObjectTree;
-import io.basicparser.parser.interfaces.IConverter;
+import io.basicparser.dataobjectsInterfaces.INode;
+import io.basicparser.parserinterfaces.IConverter;
 
 /**
  * Utility class - houses method(s) used to convert parsed string expression
@@ -46,11 +47,12 @@ public class ConverterRecursiveImpl implements IConverter{
 	 */
 	@Override
 	public void mapTreeToTreeObj(String name, ObjectTree objectTree,
-			Map<String, Node<String>> treeMap) {
+			Map<String, INode<String>> treeMap) {
+		
 	   /* Populate object tree with node Id and node data fields
 		* from object map
 		*/
-		Node<String> node = treeMap.get(name);
+		INode<String> node = treeMap.get(name);
 		objectTree.setId(node.getName());
 		objectTree.setName(node.getValue());
 

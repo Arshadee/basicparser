@@ -4,13 +4,14 @@ import java.util.List;
 import java.util.Scanner;
 
 import io.basicparser.dataobjects.DataModel;
+import io.basicparser.dataobjectsInterfaces.IDataModel;
 import io.basicparser.display.Display;
 import io.basicparser.exceptions.BasicParserException;
 import io.basicparser.parser.ConverterIteratorImpl;
 import io.basicparser.parser.ConverterRecursiveImpl;
 import io.basicparser.parser.Parser;
-import io.basicparser.parser.interfaces.IConverter;
-import io.basicparser.parser.interfaces.IParser;
+import io.basicparser.parserinterfaces.IConverter;
+import io.basicparser.parserinterfaces.IParser;
 import io.basicparser.validations.ExpressionValidator;
 
 /**
@@ -64,7 +65,7 @@ public class Main {
 			example.append("* No cyclic relations.\n");
 
 			System.out.println(example);
-			DataModel dataModel = new DataModel();
+			IDataModel dataModel = new DataModel();
 			IParser parser = new Parser();
 
 			@SuppressWarnings("resource")

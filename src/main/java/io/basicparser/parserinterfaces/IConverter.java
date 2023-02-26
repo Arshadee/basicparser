@@ -1,18 +1,18 @@
-package io.basicparser.parser.interfaces;
+package io.basicparser.parserinterfaces;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import io.basicparser.dataobjects.Node;
 import io.basicparser.dataobjects.ObjectTree;
+import io.basicparser.dataobjectsInterfaces.INode;
 
 public interface IConverter {
 	
 	public String getAlgorthmName();
 	public void mapTreeToTreeObj(String name, ObjectTree objectTree,
-			Map<String, Node<String>> treeMap);
+			Map<String, INode<String>> treeMap);
 
 	
 	/**
