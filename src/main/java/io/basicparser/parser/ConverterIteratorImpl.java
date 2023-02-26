@@ -1,15 +1,12 @@
 package io.basicparser.parser;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Stack;
-import java.util.StringTokenizer;
 
 import io.basicparser.dataobjects.Node;
 import io.basicparser.dataobjects.ObjectTree;
 import io.basicparser.dataobjectsInterfaces.INode;
+import io.basicparser.dataobjectsInterfaces.IObjectTree;
 import io.basicparser.parserinterfaces.IConverter;
 
 public class ConverterIteratorImpl implements IConverter{
@@ -20,7 +17,7 @@ public class ConverterIteratorImpl implements IConverter{
 	private final static String ALGORITH_NAME="ITERATIVE DFS";
 	
 	/**
-	 * Overrided from IConverter Interface
+	 * Overridden from IConverter Interface
 	 * 
 	 * This is a simple getter method that return the thiIs implementation
 	 * name
@@ -34,7 +31,7 @@ public class ConverterIteratorImpl implements IConverter{
 	
 
 	/**
-	 * Overrided from IConverter Interface
+	 * Overridden from IConverter Interface
 	 * 
 	 * This method creates an object tree from the an object map (key node , value
 	 * children) it uses the Depth First Search algorithm - Iterative implmentation
@@ -44,15 +41,12 @@ public class ConverterIteratorImpl implements IConverter{
 	 * @param treeMap
 	 */
 	@Override
-//	public void mapTreeToTreeObj(String name, ObjectTree objTree,
-//			Map<String, INode<String>> treeMap) {
-	public void mapTreeToTreeObj(String name, ObjectTree objectTree, Map<String, INode<String>> treeMap) {
-		
+	public void mapTreeToTreeObj(String name, IObjectTree objectTree, Map<String, INode<String>> treeMap) {
 
 		Stack<INode<String>> stack = new Stack<>();
 		INode<String> node = treeMap.get(name);
 		stack.push(node);
-		Stack<ObjectTree> stackObjTree = new Stack<>();
+		Stack<IObjectTree> stackObjTree = new Stack<>();
 		objectTree.setName(node.getName());
 		objectTree.setId(node.getName());
 		stackObjTree.push(objectTree);
@@ -74,12 +68,4 @@ public class ConverterIteratorImpl implements IConverter{
 			}
 		}
 	}
-
-
-	//@Override
-	//public void mapTreeToTreeObj(String name, ObjectTree objectTree, Map<String, INode<String>> treeMap) {
-		// TODO Auto-generated method stub
-		
-	//}
-	
 }

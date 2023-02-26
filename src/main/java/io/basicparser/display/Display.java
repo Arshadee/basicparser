@@ -5,6 +5,8 @@ import java.util.List;
 
 import io.basicparser.dataobjects.Node;
 import io.basicparser.dataobjects.ObjectTree;
+import io.basicparser.dataobjectsInterfaces.INode;
+import io.basicparser.dataobjectsInterfaces.IObjectTree;
 
 /**
  * View class - this class contains logic to display input and results
@@ -17,7 +19,7 @@ public class Display {
 	 * 
 	 * @param alist
 	 */
-	public static void displayNodelist(List<Node<String>> alist) {
+	public static void displayNodelist(List<INode<String>> alist) {
 		for (int i = 0; i < alist.size(); i++) {
 			System.out.println(alist.get(i));
 		}
@@ -28,7 +30,7 @@ public class Display {
 	 * 
 	 * @param parsingMap
 	 */
-	public static void display(HashMap<String, Node<String>> parsingMap) {
+	public static void display(HashMap<String, INode<String>> parsingMap) {
 		parsingMap.keySet().stream().forEach(k -> System.out.println(k + "|" + parsingMap.get(k).getChildren()));
 	}
 
@@ -39,14 +41,14 @@ public class Display {
 	 * @param objectTree
 	 * @param tab
 	 */
-	public static void display(ObjectTree objectTree, String tab) {
+	public static void display(IObjectTree objectTree, String tab) {
 		System.out.println(tab + objectTree.getId() + " [" + objectTree.getName() + "]");
 
 		// traverse children
 		int childCount = objectTree.getChildren().size();
 
 		for (int i = 0; i < childCount; i++) {
-			ObjectTree child = objectTree.getChildren().get(i);
+			IObjectTree child = objectTree.getChildren().get(i);
 			// display(child,tab.replaceAll(">","|")+"->");
 			display(child, tab + "|--");
 
@@ -63,14 +65,14 @@ public class Display {
 	 * @param result
 	 * @return
 	 */
-	public static StringBuilder display(ObjectTree objectTree, String tab, StringBuilder result) {
+	public static StringBuilder display(IObjectTree objectTree, String tab, StringBuilder result) {
 		//result.append(tab + objectTree.getId() + "[" + objectTree.getName() + "]\n");
 		result.append(tab + objectTree.getId() + "[" + objectTree.getName() + "]\n");
 		// traverse children
 		int childCount = objectTree.getChildren().size();
 
 		for (int i = 0; i < childCount; i++) {
-			ObjectTree child = objectTree.getChildren().get(i);
+			IObjectTree child = objectTree.getChildren().get(i);
 			display(child, tab + "|--", result);
 
 		}

@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
 import io.basicparser.dataobjects.Node;
 import io.basicparser.dataobjects.ObjectTree;
 import io.basicparser.dataobjectsInterfaces.INode;
+import io.basicparser.dataobjectsInterfaces.IObjectTree;
 import io.basicparser.parserinterfaces.IConverter;
 
 /**
@@ -46,7 +47,7 @@ public class ConverterRecursiveImpl implements IConverter{
 	 * @param treeMap
 	 */
 	@Override
-	public void mapTreeToTreeObj(String name, ObjectTree objectTree,
+	public void mapTreeToTreeObj(String name, IObjectTree objectTree,
 			Map<String, INode<String>> treeMap) {
 		
 	   /* Populate object tree with node Id and node data fields
@@ -61,7 +62,7 @@ public class ConverterRecursiveImpl implements IConverter{
 			n.setParent(objectTree);
 			objectTree.getChildren().add(n);
 			Node<String> nodeElement = (Node<String>) (nodeChild);
-			Optional<ObjectTree> tree = objectTree.getChildren()
+			Optional<IObjectTree> tree = objectTree.getChildren()
 					.parallelStream()
 					.filter(d -> d.getName() == null)
 					.findFirst();

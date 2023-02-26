@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import io.basicparser.dataobjects.ObjectTree;
 import io.basicparser.dataobjectsInterfaces.INode;
+import io.basicparser.dataobjectsInterfaces.IObjectTree;
 
 public interface IConverter {
 	
 	public String getAlgorthmName();
-	public void mapTreeToTreeObj(String name, ObjectTree objectTree,
+	public void mapTreeToTreeObj(String name, IObjectTree objectTree,
 			Map<String, INode<String>> treeMap);
 
 	

@@ -18,7 +18,7 @@ public class DataModel implements IDataModel{
     private List<INode<String>> nodeList = new ArrayList<>();
     private HashMap<String,INode<String>> parsingMap = new HashMap<>();
     private INode<String> root = new Node<>();
-    private ObjectTree objectTree = new ObjectTree();
+    private IObjectTree objectTree = new ObjectTree();
     
 	public Stack<String> getParsingStack() {
 		return parsingStack;
@@ -45,10 +45,10 @@ public class DataModel implements IDataModel{
 	public void setRoot(INode<String> root) {
 		this.root = root;
 	}
-	public ObjectTree getObjectTree() {
+	public IObjectTree getObjectTree() {
 		return objectTree;
 	}
-	public void setObjectTree(ObjectTree objectTree) {
+	public void setObjectTree(IObjectTree objectTree) {
 		this.objectTree = objectTree;
 	}
 

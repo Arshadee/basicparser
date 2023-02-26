@@ -25,7 +25,7 @@ public interface IDataModel{
 
 	public void setRoot(INode<String> root);
 
-	public ObjectTree getObjectTree();
+	public IObjectTree getObjectTree();
 
-	public void setObjectTree(ObjectTree objectTree);
+	public void setObjectTree(IObjectTree objectTree);
 }
