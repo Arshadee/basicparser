@@ -57,7 +57,7 @@ public class ExpressionChecker {
      * @return boalean result
      */
      public static boolean checkValidExpression(List<String> expression) {
- 	      boolean result = checkNodeNBrackets(expression);
+ 	      boolean result = checkNodeNBrackets(expression) && checkNodeWithNoBrackets(expression) ;
  	      return result;
  	 }
 	
@@ -74,7 +74,8 @@ public class ExpressionChecker {
 		boolean isChar= false;
 		boolean isOpen = false;
 		boolean isClose= false;
-		for(String c: chars) {
+
+	for(String c: chars) {
 			boolean isCharCurrent = (!c.equals("("))&&(!c.equals(")"));
 			boolean isOpenCurrent = c.equals("(");
 			boolean isCloseCurrent=c.equals(")");
@@ -86,6 +87,24 @@ public class ExpressionChecker {
 			isChar = isCharCurrent;
 			isOpen = isOpenCurrent;
 			isClose = isCloseCurrent;
+		}		
+		return true;
+	}
+	
+	/**
+	 * This method checks for any element without brackets or valid brackets
+	 * 
+	 * @param chars
+	 * @return boolean
+	 */
+	private static boolean checkNodeWithNoBrackets(List<String> chars) {
+		
+		for(int i=0; i<chars.size();i++) {
+			boolean isOpenCurrent = chars.get(i).equals("(");
+			boolean isCharPrev = 
+					(i>0)? (!chars.get(i-1).equals("("))&&(!chars.get(i-1).equals(")")) : false;
+            
+		 if(isCharPrev && !isOpenCurrent) return false;
 			
 		}		
 		return true;

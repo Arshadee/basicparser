@@ -34,7 +34,12 @@ class BasicParserIteratorTest {
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 
 		dataModel = parser.parse(testExpression);
-
+/*
+ * converter.mapTreeToTreeObj(
+					dataModel.getRoot().getName(),
+					dataModel.getObjectTree(),
+					dataModel.getParsingMap());
+ */
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
 

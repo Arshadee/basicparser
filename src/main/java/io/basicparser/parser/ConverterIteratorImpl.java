@@ -57,7 +57,7 @@ public class ConverterIteratorImpl implements IConverter{
 			node = treeMap.get(node.getName());
 
 			for (int i = 0; i < node.getChildren().size(); i++) {
-				Node<String> child = node.getChildren().get(i);
+				INode<String> child = node.getChildren().get(i);
 				stack.push(child);
 				ObjectTree n = new ObjectTree();
 				n.setName(child.getName());

@@ -10,10 +10,10 @@ import io.basicparser.dataobjectsInterfaces.INode;
  * @author Arshad
  */
 public class Node<T> implements INode<T>{
-    private Node<T> parent;
+    private INode<T> parent;
     private String name;
     private T value;
-    private List<Node<T>> children = new ArrayList<>();
+    private List<INode<T>> children = new ArrayList<>();
 
     public Node(){}
    
@@ -27,11 +27,11 @@ public class Node<T> implements INode<T>{
       this.value = value;
     }
 
-    public Node<T> getParent() {
+    public INode<T> getParent() {
         return parent;
     }
 
-    public void setParent(Node<T> parent) {
+    public void setParent(INode<T> parent) {
         this.parent = parent;
     }
 
@@ -56,24 +56,24 @@ public class Node<T> implements INode<T>{
         return "name "+name+ " parent "+parent;
     }
 
-    public List<Node<T>> getChildren(){
+    public List<INode<T>> getChildren(){
         return children;
     }
 
-    public List<Node<T>> getSiblings(){
-        List<Node<T>> siblings = parent.children;
+    public List<INode<T>> getSiblings(){
+        List<INode<T>> siblings = parent.getChildren();
         siblings.remove(this);
         return siblings;
     }
 
-    public void addNode(Node<T> node){
+    public void addNode(INode<T> node){
         children.add(node);
-        node.parent = this;
+        node.setParent(this);
     }
 
-    public void removeNode(Node<T> node){
+    public void removeNode(INode<T> node){
         children.remove(node);
-        node.parent = null;
+        node.setParent(null);
     }
 
 }

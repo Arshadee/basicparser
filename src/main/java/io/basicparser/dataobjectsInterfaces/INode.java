@@ -6,9 +6,9 @@ import io.basicparser.dataobjects.Node;
 
 public interface INode<T> {
 	
-	 public Node<T> getParent();
+	 public INode<T> getParent();
 
-	    public void setParent(Node<T> parent);
+	    public void setParent(INode<T> parent);
 
 	    public String getName();
 
@@ -18,11 +18,11 @@ public interface INode<T> {
 	    
 	    public void setValue(T value);
 
-	    public List<Node<T>> getChildren();
+	    public List<INode<T>> getChildren();
 
-	    public List<Node<T>> getSiblings();
+	    public List<INode<T>> getSiblings();
 
-	    public void addNode(Node<T> node);
+	    public void addNode(INode<T> node);
 
-	    public void removeNode(Node<T> node);
+	    public void removeNode(INode<T> node);
 }
