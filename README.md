@@ -13,17 +13,18 @@ for example r(a()b(c()d(e())))**
 
 For example :
 
-string expression r(a()b(c()d())e())
+**string expression r(a()b(c()d())e())**
 
-Your output should be: (or similar representing the node tree)
-Node Tree<br>
+Your **output** should be: (or similar representing the node tree)
 
- r<br>
- |--a<br>
- |--b<br>
- |--|--c<br>
- |--|--d<br>
- |--e<br>
+**Node Tree**<br>
+
+ **r**<br>
+ **|--a**<br>
+ **|--b**<br>
+ **|--|--c**<br>
+ **|--|--d**<br>
+ **|--e**<br>
 
 **Validation Rules:**
 * Must validate the string expression - parenthesis must be balanced
