@@ -77,4 +77,16 @@ public class ExpectedResults {
 			"|--|--f[f]\n" + 
 			"|--g[g]\n";
 			
+	public static String testCase6 =
+			"root[root]\n"+
+			"|--branch1[branch1]\n"+
+			"|--|--leaf1[leaf1]\n"+
+			"|--branch2[branch2]\n"+
+			"|--|--leaf2[leaf2]\n"+
+			"|--branch3[branch3]\n"+
+			"|--|--branch4[branch4]\n"+
+			"|--|--|--leaf3[leaf3]\n"+
+			"|--|--branch5[branch5]\n"+
+			"|--|--|--leaf4[leaf4]\n"+
+			"|--|--leaf5[leaf5]\n";
 }
