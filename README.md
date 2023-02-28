@@ -26,10 +26,10 @@ Node Tree<br>
 **Validation Rules:**
 * Must validate the string expression - parenthesis must be balanced
   no missing open or closed brackets.
-* Each Node must be followed by open bracket thats eventually closed.
+* Each node must be followed by open bracket thats eventually closed.
 * No brackets that do not follow a node i.e. belonging to a node.
 * Expression cannot represent a disjoint tree and / or have a missing Root Node.
-* No cyclic relations.
+* No cyclic relations. i.e. no node can be duplicated in a given string expression
 
 # This project is the solution for this code challenge, Basic Parser
 
