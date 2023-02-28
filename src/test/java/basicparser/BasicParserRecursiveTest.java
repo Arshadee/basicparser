@@ -18,7 +18,7 @@ import io.basicparser.parserinterfaces.IParser;
 import io.basicparser.parser.ConverterRecursiveImpl;
 import io.basicparser.validations.ExpressionValidator;
 
-class BasicParserTest {
+class BasicParserRecursiveTest {
 
 
 	@Test
