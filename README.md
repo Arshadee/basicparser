@@ -1,7 +1,9 @@
 # basicparser
 **Code Challenge : Basic parser convert a string expresion into an object tree**
 
-**Given any string expression for example r(a()b(c()d(e()))) following this format.**
+**Convert any given string expression made up of nodes/elements each containing an opening and closing bracket.
+a node may contain other nodes with in it brackets,f its very simple format
+for example r(a()b(c()d(e())))**
 
 **Parsing:**
 * Convert the string expression of nodes and their relations into a hierarchical,
