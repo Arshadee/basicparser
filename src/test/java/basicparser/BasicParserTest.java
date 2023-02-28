@@ -15,7 +15,6 @@ import io.basicparser.exceptions.BasicParserException;
 import io.basicparser.parser.Parser;
 import io.basicparser.parserinterfaces.IConverter;
 import io.basicparser.parserinterfaces.IParser;
-import io.basicparser.parser.ConverterIteratorImpl;
 import io.basicparser.parser.ConverterRecursiveImpl;
 import io.basicparser.validations.ExpressionValidator;
 
@@ -27,9 +26,7 @@ class BasicParserTest {
 		
 		String testExpression = "r(a(b(c()d()))e())";
 		IConverter converter = new ConverterRecursiveImpl();
-
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
-
 		IDataModel dataModel = new DataModel();
 		IParser parser = new Parser();
 
@@ -37,10 +34,8 @@ class BasicParserTest {
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 
 		dataModel = parser.parse(testExpression);
-
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
-
 		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 
 		assertEquals(ExpectedResults.testCase1, result);
@@ -48,21 +43,19 @@ class BasicParserTest {
 
 	@Test
 	void testCase2Success() throws BasicParserException {
+		
 		String testExpression = "r(a(b()c())d(e())g(h(i(j()k()l())))m(n())o())";
 		IDataModel dataModel = new DataModel();
 		IParser parser = new Parser();
 		IConverter converter = new ConverterRecursiveImpl();
-		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
 		ExpressionValidator.validateExprBalanceBrace(tokens);
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 
 		dataModel = parser.parse(testExpression);
-
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
-
 		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 
 		assertEquals(ExpectedResults.testCase2, result);
@@ -93,42 +86,38 @@ class BasicParserTest {
 
 	@Test
 	void testCase4Success() throws BasicParserException {
+		
 		String testExpression = "r(a(b()c(d()e()f(g()h()i()j(k()l()m()n(v()s()w()t())o(x()u()B(*())y()))))))";
 		IDataModel dataModel = new DataModel();
 		IParser parser = new Parser();
 		IConverter converter = new ConverterRecursiveImpl();
-		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
 		ExpressionValidator.validateExprBalanceBrace(tokens);
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 	    
 		dataModel = parser.parse(testExpression);
-		
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
-
 		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 
 		assertEquals(ExpectedResults.testCase4, result);
 	}
 	@Test
 	void testCase5Success() throws BasicParserException {
+		
 		String testExpression = "r(a(b(c(d())e())f())g())";
 		IDataModel dataModel = new DataModel();
 		IParser parser = new Parser();
 		IConverter converter = new ConverterRecursiveImpl();
-		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
 		ExpressionValidator.validateExprBalanceBrace(tokens);
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 	    
 		dataModel = parser.parse(testExpression);
-		
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
-
 		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 
 		assertEquals(ExpectedResults.testCase5, result);
@@ -136,22 +125,20 @@ class BasicParserTest {
 
 	@Test
 	void testCase6Success() throws BasicParserException {
+		
 		String testExpression =
 				"root(branch1(leaf1())branch2(leaf2())branch3(branch4(leaf3())branch5(leaf4())leaf5()))";
 		IParser parser = new Parser();
 		IConverter converter = new ConverterRecursiveImpl();
 		IDataModel dataModel = new DataModel();
-		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
 		ExpressionValidator.validateExprBalanceBrace(tokens);
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 	    
 		dataModel = parser.parse(tokens);
-		
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
 				dataModel.getParsingMap());
-
 		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 
 		assertEquals(ExpectedResults.testCase6, result);
@@ -162,7 +149,6 @@ class BasicParserTest {
 		
 		String testExpression = "r(a(b()c())d(e())g(h(i(j()k()l()))m(n())o())"; // error brackt impbalance
 		IConverter converter = new ConverterRecursiveImpl();
-		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
 		Exception exception = assertThrows(BasicParserException.class, () -> {
@@ -177,9 +163,9 @@ class BasicParserTest {
 
 	@Test
 	void testCase8ExceptionIncorrectExpression() {
+		
 		String testExpression = "r";
 		IConverter converter = new ConverterRecursiveImpl();
-		
 		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
 		Exception exception = assertThrows(BasicParserException.class, () -> {
@@ -230,6 +216,7 @@ class BasicParserTest {
 
 	@Test
 	void testCase11ExceptionIncorrectExpressionDisjointTree() {
+		
 		String testExpression = "a()b(c()d())e(f())";
 		IParser parser = new Parser();
 		IConverter converter = new ConverterRecursiveImpl();
@@ -279,6 +266,7 @@ class BasicParserTest {
 	
 	@Test
 	void testCase13ExceptionIncorrectExpressionElementNoBrackets() {
+		
 		String testExpression =
 				"root(trunk(branch1(leaf1())branch2(leaf2())branch3(branch4(leaf3())branch5(leaf4())leaf5(leaf6))))";
 		
@@ -297,6 +285,7 @@ class BasicParserTest {
 	
 	@Test
 	void testCase14ExceptionIncorrectExpressionCyclicRelations() {
+	
 		String testExpression =
 				"root(trunk(branch1(leaf1())branch2(leaf2())branch3(branch4(leaf3(branch1()))branch5(leaf4(branch2()))leaf5(leaf6))))";
 		
