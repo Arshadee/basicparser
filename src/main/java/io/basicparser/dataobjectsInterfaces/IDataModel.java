@@ -4,9 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
 
-import io.basicparser.dataobjects.Node;
-import io.basicparser.dataobjects.ObjectTree;
-
 public interface IDataModel{
 
 	public Stack<String> getParsingStack();
@@ -25,7 +22,4 @@ public interface IDataModel{
 
 	public void setRoot(INode<String> root);
 
-//	public IObjectTree getObjectTree();
-//
-//	public void setObjectTree(IObjectTree objectTree);
 }

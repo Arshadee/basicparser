@@ -33,11 +33,8 @@ class BasicParserIteratorTest {
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 
 		dataModel = parser.parse(testExpression);
-//		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
-//				dataModel.getParsingMap());
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
-		//String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 		
 		assertEquals(ExpectedResults.testCase1, result);
@@ -56,12 +53,8 @@ class BasicParserIteratorTest {
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 
 		dataModel = parser.parse(testExpression);
-//		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
-//				dataModel.getParsingMap());
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 		dataModel.getParsingMap());
-	
-//		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 				
 		assertEquals(ExpectedResults.testCase2, result);
@@ -81,13 +74,8 @@ class BasicParserIteratorTest {
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 
 		dataModel = parser.parse(testExpression);
-//		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
-//		dataModel.getParsingMap());
-		
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 		dataModel.getParsingMap());
-		
-		//String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 		
 		assertEquals(ExpectedResults.testCase3, result);
@@ -107,12 +95,8 @@ class BasicParserIteratorTest {
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 	    
 		dataModel = parser.parse(testExpression);
-//		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
-//		dataModel.getParsingMap());
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 		dataModel.getParsingMap());
-		
-		//String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 
 		assertEquals(ExpectedResults.testCase4, result);
@@ -130,12 +114,8 @@ class BasicParserIteratorTest {
 		ExpressionValidator.validateExprBalanceBrace(tokens);
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 		dataModel = parser.parse(testExpression);
-//		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
-//		dataModel.getParsingMap());
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 		dataModel.getParsingMap());
-		
-		//String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 		
 		assertEquals(ExpectedResults.testCase5, result);
@@ -155,12 +135,8 @@ class BasicParserIteratorTest {
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 		
 	    dataModel = parser.parse(tokens);
-//		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
-//		dataModel.getParsingMap());
 	    converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 		dataModel.getParsingMap());
-		
-	    //String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 	    String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 		assertEquals(ExpectedResults.testCase6, result);
 	}
@@ -244,12 +220,8 @@ class BasicParserIteratorTest {
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 			IDataModel dataModel = new DataModel();
 			dataModel = parser.parse(testExpression);
-//			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
-//			dataModel.getParsingMap());
 			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 			dataModel.getParsingMap());
-			
-			//	String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
 			String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 			ExpressionValidator.validateExprHasRootAndNotDisjoint(testExpression, result);
 
@@ -271,8 +243,6 @@ class BasicParserIteratorTest {
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 			IDataModel dataModel = new DataModel();
 			dataModel = parser.parse(testExpression);
-//			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
-//					dataModel.getParsingMap());
 			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 					dataModel.getParsingMap());
 			String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();

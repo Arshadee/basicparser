@@ -54,8 +54,6 @@ public class Test {
 		// Display.display(dataModel.getParsingMap());
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
-		// System.out.println();
-		// Display.display(dataModel.getObjectTree(), " ");
 		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 
 		// if(!ExpressionValidator.checkForRootNode(s,result)) throw new

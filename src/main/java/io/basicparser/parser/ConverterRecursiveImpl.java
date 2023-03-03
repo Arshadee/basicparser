@@ -1,16 +1,10 @@
 package io.basicparser.parser;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Stack;
-import java.util.StringTokenizer;
 
 import io.basicparser.dataobjects.Node;
-import io.basicparser.dataobjects.ObjectTree;
 import io.basicparser.dataobjectsInterfaces.INode;
-import io.basicparser.dataobjectsInterfaces.IObjectTree;
 import io.basicparser.parserinterfaces.IConverter;
 
 /**
@@ -47,8 +41,6 @@ public class ConverterRecursiveImpl implements IConverter{
 	 * @param treeMap
 	 */
 	@Override
-//	public void mapTreeToTreeObj(String name, IObjectTree objectTree,
-//			Map<String, INode<String>> treeMap) {
 	public void mapTreeToTreeObj(String name, INode<String> treeNode, 
 			Map<String, INode<String>> treeMap) {
 
@@ -57,20 +49,14 @@ public class ConverterRecursiveImpl implements IConverter{
 		* from object map
 		*/
 		INode<String> node = treeMap.get(name);
-		//objectTree.setId(node.getName());
 		treeNode.setName(node.getName());
-		//objectTree.setName(node.getValue());
 		treeNode.setValue(node.getValue());
 
 		node.getChildren().parallelStream().forEachOrdered(nodeChild -> {
-			//ObjectTree n = new ObjectTree();
 			INode<String> n = new Node<>();
-			//n.setParent(objectTree);
 			n.setParent(treeNode);
-			//objectTree.getChildren().add(n);
 			treeNode.getChildren().add(n);
 			Node<String> nodeElement = (Node<String>) (nodeChild);
-			//Optional<IObjectTree> tree = objectTree.getChildren()
 			Optional<INode<String>> tree = treeNode.getChildren()
 					.parallelStream()
 					.filter(d -> d.getName() == null)
@@ -78,9 +64,5 @@ public class ConverterRecursiveImpl implements IConverter{
 			mapTreeToTreeObj(nodeElement.getName(), tree.get(), treeMap);
 		});
 	}
-
-	
-
-
 	
 }
