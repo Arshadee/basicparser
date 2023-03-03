@@ -74,7 +74,7 @@ public class Parser implements IParser{
         addMapElement(tmp1, parsingMap);
         if (expression.contains("->")) {
             tmp2 = st.nextElement().toString();
-            parsingMap.get(tmp1).getChildren().add(new Node<>(tmp2,tmp1));
+            parsingMap.get(tmp1).getChildren().add(new Node<>(tmp2,tmp2));
             addMapElement(tmp2, parsingMap);
         }
     }

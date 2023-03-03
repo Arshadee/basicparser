@@ -100,10 +100,10 @@ public class Main {
 
 			converter.mapTreeToTreeObj(
 					dataModel.getRoot().getName(),
-					dataModel.getObjectTree(),
+					dataModel.getRoot(),
 					dataModel.getParsingMap());
 
-			String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
+			String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 
 			try {
 				ExpressionValidator.validateExprHasRootAndNotDisjoint(expression, result);

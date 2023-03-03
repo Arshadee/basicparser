@@ -47,11 +47,14 @@ public class TestIterator {
 		System.out.println();
 		// System.out.println("Map of Relations to be used to build Object Tree");
 		// Display.display(dataModel.getParsingMap());
-		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
-				dataModel.getParsingMap());
-		// System.out.println();
-		// Display.display(dataModel.getObjectTree(), " ");
-		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
+		
+		//		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+		//		dataModel.getParsingMap());
+		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
+		dataModel.getParsingMap());
+		
+		//String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
+		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 
 		// if(!ExpressionValidator.checkForRootNode(s,result)) throw new
 		// IllegalArgumentException("Expression does not have a root node or represents

@@ -47,22 +47,31 @@ public class ConverterRecursiveImpl implements IConverter{
 	 * @param treeMap
 	 */
 	@Override
-	public void mapTreeToTreeObj(String name, IObjectTree objectTree,
+//	public void mapTreeToTreeObj(String name, IObjectTree objectTree,
+//			Map<String, INode<String>> treeMap) {
+	public void mapTreeToTreeObj(String name, INode<String> treeNode, 
 			Map<String, INode<String>> treeMap) {
+
 		
 	   /* Populate object tree with node Id and node data fields
 		* from object map
 		*/
 		INode<String> node = treeMap.get(name);
-		objectTree.setId(node.getName());
-		objectTree.setName(node.getValue());
+		//objectTree.setId(node.getName());
+		treeNode.setName(node.getName());
+		//objectTree.setName(node.getValue());
+		treeNode.setValue(node.getValue());
 
 		node.getChildren().parallelStream().forEachOrdered(nodeChild -> {
-			ObjectTree n = new ObjectTree();
-			n.setParent(objectTree);
-			objectTree.getChildren().add(n);
+			//ObjectTree n = new ObjectTree();
+			INode<String> n = new Node<>();
+			//n.setParent(objectTree);
+			n.setParent(treeNode);
+			//objectTree.getChildren().add(n);
+			treeNode.getChildren().add(n);
 			Node<String> nodeElement = (Node<String>) (nodeChild);
-			Optional<IObjectTree> tree = objectTree.getChildren()
+			//Optional<IObjectTree> tree = objectTree.getChildren()
+			Optional<INode<String>> tree = treeNode.getChildren()
 					.parallelStream()
 					.filter(d -> d.getName() == null)
 					.findFirst();

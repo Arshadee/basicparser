@@ -75,4 +75,16 @@ public class Display {
 		}
 		return result;
 	}
+	
+	public static StringBuilder display(INode<String> treeNode, String tab, StringBuilder result) {
+		result.append(tab + treeNode.getName() + "[" + treeNode.getValue() + "]\n");
+		// traverse children
+		int childCount = treeNode.getChildren().size();
+
+		for (int i = 0; i < childCount; i++) {
+			INode<String> child = treeNode.getChildren().get(i);
+			display(child, tab + "|--", result);
+		}
+		return result;
+	}
 }

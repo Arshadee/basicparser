@@ -34,9 +34,9 @@ class BasicParserRecursiveTest {
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 
 		dataModel = parser.parse(testExpression);
-		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
-		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
+		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 
 		assertEquals(ExpectedResults.testCase1, result);
 	}
@@ -54,12 +54,13 @@ class BasicParserRecursiveTest {
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 
 		dataModel = parser.parse(testExpression);
-		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
-		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
+		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 
 		assertEquals(ExpectedResults.testCase2, result);
 	}
+	
 
 	@Test
 	void testCase3Success() throws BasicParserException {
@@ -75,11 +76,9 @@ class BasicParserRecursiveTest {
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 
 		dataModel = parser.parse(testExpression);
-
-		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
-
-		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
+		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 
 		assertEquals(ExpectedResults.testCase3, result);
 	}
@@ -97,12 +96,14 @@ class BasicParserRecursiveTest {
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 	    
 		dataModel = parser.parse(testExpression);
-		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
-		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
+		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 
 		assertEquals(ExpectedResults.testCase4, result);
 	}
+	
+	
 	@Test
 	void testCase5Success() throws BasicParserException {
 		
@@ -115,10 +116,10 @@ class BasicParserRecursiveTest {
 		ExpressionValidator.validateExprBalanceBrace(tokens);
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 	    
-		dataModel = parser.parse(testExpression);
-		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+	    dataModel = parser.parse(testExpression);
+		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
-		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
+		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 
 		assertEquals(ExpectedResults.testCase5, result);
 	}
@@ -137,9 +138,9 @@ class BasicParserRecursiveTest {
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 	    
 		dataModel = parser.parse(tokens);
-		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
-		String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
+		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 
 		assertEquals(ExpectedResults.testCase6, result);
 	}
@@ -214,6 +215,7 @@ class BasicParserRecursiveTest {
 		assertTrue(actualMessage.contains(expectedMessage));
 	}
 
+
 	@Test
 	void testCase11ExceptionIncorrectExpressionDisjointTree() {
 		
@@ -225,9 +227,9 @@ class BasicParserRecursiveTest {
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 			IDataModel dataModel = new DataModel();
 			dataModel = parser.parse(testExpression);
-			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 					dataModel.getParsingMap());
-			String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
+			String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 			ExpressionValidator.validateExprHasRootAndNotDisjoint(testExpression, result);
 
 		});
@@ -249,10 +251,13 @@ class BasicParserRecursiveTest {
 			IDataModel dataModel = new DataModel();
 			dataModel = parser.parse(testExpression);
 
-			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
-					dataModel.getParsingMap());
+//			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getObjectTree(),
+//					dataModel.getParsingMap());
+			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
+			dataModel.getParsingMap());
 
-			String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
+//			String result = Display.display(dataModel.getObjectTree(), "", new StringBuilder()).toString();
+			String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 
 			ExpressionValidator.validateExprHasRootAndNotDisjoint(testExpression, result);
 
@@ -264,6 +269,7 @@ class BasicParserRecursiveTest {
 		assertTrue(actualMessage.contains(expectedMessage));
 	}
 	
+
 	@Test
 	void testCase13ExceptionIncorrectExpressionElementNoBrackets() {
 		
@@ -283,6 +289,7 @@ class BasicParserRecursiveTest {
 		assertTrue(actualMessage.contains(expectedMessage));
 	}
 	
+	
 	@Test
 	void testCase14ExceptionIncorrectExpressionCyclicRelations() {
 	
@@ -301,5 +308,6 @@ class BasicParserRecursiveTest {
 		
 		assertTrue(actualMessage.contains(expectedMessage));
 	}
+	
 }
 

@@ -11,8 +11,11 @@ import io.basicparser.dataobjectsInterfaces.IObjectTree;
 public interface IConverter {
 	
 	public String getAlgorthmName();
-	public void mapTreeToTreeObj(String name, IObjectTree objectTree,
+//	public void mapTreeToTreeObj(String name, IObjectTree objectTree,
+//			Map<String, INode<String>> treeMap);
+	public void mapTreeToTreeObj(String name, INode<String> treeNode, 
 			Map<String, INode<String>> treeMap);
+
 
 	
 	/**
