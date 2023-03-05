@@ -120,7 +120,7 @@ public class ExpressionChecker {
 	 * @return boolean result
 	 */
 	public static boolean checkForRootNodeAndDisjointTree(String expression,String result) {
-		return expression.charAt(0) == result.charAt(0);
+		return expression.equals(result);
 	}
 	
 	/**

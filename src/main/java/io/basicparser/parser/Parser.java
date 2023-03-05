@@ -79,29 +79,6 @@ public class Parser implements IParser{
         }
     }
    
-
-    /**
-     * Overridden from IParser Interface
-     *  
-     * This method builds the stack in the dataModel from the expression string
-     * and uses the stack to build a object map of (key) parent and (value) children 
-     * @param String expression
-     * @return DataModel instance
-     */
-    @Override
-    public IDataModel parse(String expression) {
-    	IDataModel dataModel = new DataModel();
-        for (int i = 0; i < expression.length(); i++) {
-            if (expression.charAt(i) == ')') {
-            	dataModel = buildNodeStr(dataModel);
-            }
-            if ((expression.charAt(i) != '(') && (expression.charAt(i) != ')')) {
-            	dataModel.getParsingStack().push(expression.charAt(i) + "");
-            }
-        }
-        return dataModel;
-    }
-    
     /**
      * Overridden and overloaded from IParser Interface
      * 
@@ -123,6 +100,4 @@ public class Parser implements IParser{
         }
         return dataModel;
     }
-
-
 }

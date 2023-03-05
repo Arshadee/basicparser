@@ -15,6 +15,7 @@ import io.basicparser.exceptions.BasicParserException;
 import io.basicparser.parser.Parser;
 import io.basicparser.parserinterfaces.IConverter;
 import io.basicparser.parserinterfaces.IParser;
+import io.basicparser.parser.ConverterIteratorImpl;
 import io.basicparser.parser.ConverterRecursiveImpl;
 import io.basicparser.validations.ExpressionValidator;
 
@@ -33,7 +34,7 @@ class BasicParserRecursiveTest {
 		ExpressionValidator.validateExprBalanceBrace(tokens);
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 
-		dataModel = parser.parse(testExpression);
+	    dataModel = parser.parse(tokens);
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
 		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
@@ -53,7 +54,7 @@ class BasicParserRecursiveTest {
 		ExpressionValidator.validateExprBalanceBrace(tokens);
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 
-		dataModel = parser.parse(testExpression);
+	    dataModel = parser.parse(tokens);
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
 		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
@@ -75,7 +76,7 @@ class BasicParserRecursiveTest {
 		ExpressionValidator.validateExprBalanceBrace(tokens);
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 
-		dataModel = parser.parse(testExpression);
+	    dataModel = parser.parse(tokens);
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
 		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
@@ -95,7 +96,7 @@ class BasicParserRecursiveTest {
 		ExpressionValidator.validateExprBalanceBrace(tokens);
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 	    
-		dataModel = parser.parse(testExpression);
+	    dataModel = parser.parse(tokens);
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
 		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
@@ -116,7 +117,7 @@ class BasicParserRecursiveTest {
 		ExpressionValidator.validateExprBalanceBrace(tokens);
 	    ExpressionValidator.validateExprMisplacedBraceNode(tokens);
 	    
-	    dataModel = parser.parse(testExpression);
+	    dataModel = parser.parse(tokens);
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
 		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
@@ -222,11 +223,12 @@ class BasicParserRecursiveTest {
 		String testExpression = "a()b(c()d())e(f())";
 		IParser parser = new Parser();
 		IConverter converter = new ConverterRecursiveImpl();
+		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
 
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 			IDataModel dataModel = new DataModel();
-			dataModel = parser.parse(testExpression);
+			dataModel = parser.parse(tokens);
 			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 					dataModel.getParsingMap());
 			String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
@@ -241,15 +243,16 @@ class BasicParserRecursiveTest {
 	}
 
 	@Test
-	void testCase12ExceptionIncorrectExpressionDisjointTree() {
+	void testCase12aExceptionIncorrectExpressionDisjointTree() {
 		
 		String testExpression = "r(a()b()c(d()e()))x(h()i())";
 		IParser parser = new Parser();
 		IConverter converter = new ConverterRecursiveImpl();
+		List<String> tokens = converter.mapToStringTokenList(testExpression);
 		
 		Exception exception = assertThrows(BasicParserException.class, () -> {
 			IDataModel dataModel = new DataModel();
-			dataModel = parser.parse(testExpression);
+			dataModel = parser.parse(tokens);
 			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 			dataModel.getParsingMap());
 			String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
@@ -264,7 +267,29 @@ class BasicParserRecursiveTest {
 		assertTrue(actualMessage.contains(expectedMessage));
 	}
 	
+	@Test
+	void testCase12bExceptionIncorrectExpressionDisjointTree() {
+		
+		String testExpression = "root(branch1(leaf1())branch2(leaf2())branch3(branch4(leaf3())branch5(leaf4())leaf5()))branchX(branchY()branchZ())";
+		IParser parser = new Parser();
+		IConverter converter = new ConverterIteratorImpl();
+		List<String> tokens = converter.mapToStringTokenList(testExpression);
+		
+		Exception exception = assertThrows(BasicParserException.class, () -> {
+			IDataModel dataModel = new DataModel();
+			dataModel = parser.parse(tokens);
+			converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
+					dataModel.getParsingMap());
+			String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
+			ExpressionValidator.validateExprHasRootAndNotDisjoint(testExpression, result);
+		});
 
+		String expectedMessage = "Expression does not have a root node or represents a dis-joint tree";
+		String actualMessage = exception.getMessage();
+
+		assertTrue(actualMessage.contains(expectedMessage));
+	}
+	
 	@Test
 	void testCase13ExceptionIncorrectExpressionElementNoBrackets() {
 		

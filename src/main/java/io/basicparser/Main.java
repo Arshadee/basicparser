@@ -28,15 +28,14 @@ public class Main {
 		
 		boolean cont = true;
 		
-		/*
-		 *  To use the Recursive DFS Algorithm
-		 */
-		IConverter converter;// = new ConverterRecursiveImpl();
-		
-		/*
-		 *  To use the Iterative DFS Algorithm
-		 */
-		//IConverter converter = new ConverterIteratorImpl();
+		/* Note
+		*  To use the Recursive DFS Algorithm
+		*	IConverter converter;= new ConverterRecursiveImpl();
+		*
+		*  To use the Iterative DFS Algorithm
+		*  IConverter converter = new ConverterIteratorImpl();
+		*/
+		IConverter converter;
 		
 		do {
 			// String sample = "r[r]\n" + "|--a[a]\n" + "|--|--b[b]\n" + "|--|--|--c[c]\n" +
@@ -85,6 +84,7 @@ public class Main {
 			}
 		
 			List<String> tokens = converter.mapToStringTokenList(expression);
+			String head = tokens.get(0);
 
 			try {
 				ExpressionValidator.validateExprBalanceBrace(tokens);
@@ -103,14 +103,14 @@ public class Main {
 					dataModel.getRoot(),
 					dataModel.getParsingMap());
 
-			String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
-
 			try {
-				ExpressionValidator.validateExprHasRootAndNotDisjoint(expression, result);
+				ExpressionValidator.validateExprHasRootAndNotDisjoint(head, dataModel.getRoot().getName());
 			} catch (BasicParserException bpe) {
 				errorHandling(bpe, expression);
 				continue;
 			}
+
+			String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 
 			System.out.println("Object Tree - Result:");
 			System.out.println("Algorithm used "+converter.getAlgorthmName());
