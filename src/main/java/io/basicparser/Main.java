@@ -5,13 +5,14 @@ import java.util.Scanner;
 
 import io.basicparser.dataobjects.DataModel;
 import io.basicparser.dataobjectsInterfaces.IDataModel;
-import io.basicparser.display.Display;
+import io.basicparser.display.DisplayDataImpl;
 import io.basicparser.exceptions.BasicParserException;
 import io.basicparser.parser.ConverterIteratorImpl;
 import io.basicparser.parser.ConverterRecursiveImpl;
 import io.basicparser.parser.Parser;
 import io.basicparser.parserinterfaces.IConverter;
 import io.basicparser.parserinterfaces.IParser;
+import io.basicparser.displayinterfaces.IDisplayData;
 import io.basicparser.validations.ExpressionValidator;
 
 /**
@@ -27,6 +28,7 @@ public class Main {
 	public static void main(String[] args) throws IllegalArgumentException {
 		
 		boolean cont = true;
+		IDisplayData displayData = new DisplayDataImpl();
 		
 		/* Note
 		*  To use the Recursive DFS Algorithm
@@ -110,7 +112,7 @@ public class Main {
 				continue;
 			}
 
-			String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
+			String result = displayData.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 
 			System.out.println("Object Tree - Result:");
 			System.out.println("Algorithm used "+converter.getAlgorthmName());

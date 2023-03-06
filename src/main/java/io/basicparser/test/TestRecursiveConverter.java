@@ -4,12 +4,13 @@ import java.util.List;
 
 import io.basicparser.dataobjects.DataModel;
 import io.basicparser.dataobjectsInterfaces.IDataModel;
-import io.basicparser.display.Display;
+import io.basicparser.display.DisplayDataImpl;
 
 import io.basicparser.exceptions.BasicParserException;
 import io.basicparser.parser.ConverterRecursiveImpl;
 import io.basicparser.parser.Parser;
 import io.basicparser.parserinterfaces.IConverter;
+import io.basicparser.displayinterfaces.IDisplayData;
 import io.basicparser.validations.ExpressionValidator;
 
 
@@ -17,17 +18,18 @@ import io.basicparser.validations.ExpressionValidator;
  * Testing Applcation - used to assist with debugging various components
  * of this application
  */
-public class Test {
+public class TestRecursiveConverter {
 	static String tc1 = "r[r]\n" + "|--a[a]\n" + "|--|--b[b]\n" + "|--|--|--c[c]\n" + "|--|--|--d[d]\n" + "|--e[e]";
 
 	public static void main(String[] args) {
 		IDataModel dataModel = new DataModel();
 		Parser parser = new Parser();
 		IConverter converter = new ConverterRecursiveImpl();
+		IDisplayData displayData = new DisplayDataImpl();
 
 		// String s ="r(a(b(c()d()))e())";
 		// String s = "r(a(b()c())d(e())g(h(i(j()k()l())))m(n())o())";
-		// String s = "r(a()b()c()d(e()f()g(h()i(j()))))";
+		//String s = "r(a()b()c()d(e()f()g(h()i(j()))))";
 		String s = "root(apple(banana()cliff(drift ( ) egg ( ) f ( g ( ) h ( ) i ( ) j ( k ( ) l ( ) m ( ) n ( v ( ) s ( ) w ( ) t ( ) ) o ( x ( ) u ( ) B ( * ( ) ) y ( ) ) ) ) ) ) )";
 
 		// error cases
@@ -39,6 +41,7 @@ public class Test {
 
 		System.out.println(s);
 		List<String> tokens = converter.mapToStringTokenList(s);
+		String head = tokens.get(0);
 
 		try {
 			ExpressionValidator.validateExprBalanceBrace(tokens);
@@ -54,13 +57,12 @@ public class Test {
 		// Display.display(dataModel.getParsingMap());
 		converter.mapTreeToTreeObj(dataModel.getRoot().getName(), dataModel.getRoot(),
 				dataModel.getParsingMap());
-		String result = Display.display(dataModel.getRoot(), "", new StringBuilder()).toString();
-
+		String result = displayData.display(dataModel.getRoot(), "", new StringBuilder()).toString();
 		// if(!ExpressionValidator.checkForRootNode(s,result)) throw new
 		// IllegalArgumentException("Expression does not have a root node or represents
 		// a dis-joint tree");
 		try {
-			ExpressionValidator.validateExprHasRootAndNotDisjoint(s, result);
+			ExpressionValidator.validateExprHasRootAndNotDisjoint(head, dataModel.getRoot().getName());
 		} catch (BasicParserException e) {
 			e.printStackTrace();
 			return;
