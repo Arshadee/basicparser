@@ -64,3 +64,25 @@ r [r]
 |--|--|--|--|--|--8 [8]
 
 ----------------------------------------------------------------
+Permutations Tree for set [a,b,c]
+Enter expression:
+root(a(ab(abc())ac(acb()))b(ba(bac())bc(bca()))c(ca(cab())cb(cba())))
+
+Object Tree - Result:
+Algorithm used RECURSIVE DFS
+root[root]
+|--a[a]
+|--|--ab[ab]
+|--|--|--abc[abc]
+|--|--ac[ac]
+|--|--|--acb[acb]
+|--b[b]
+|--|--ba[ba]
+|--|--|--bac[bac]
+|--|--bc[bc]
+|--|--|--bca[bca]
+|--c[c]
+|--|--ca[ca]
+|--|--|--cab[cab]
+|--|--cb[cb]
+|--|--|--cba[cba]
