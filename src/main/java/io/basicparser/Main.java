@@ -124,7 +124,7 @@ public class Main {
 			System.out.println("Or");
 			System.out.println("Do you wish to continue [y/n]");
 			String play = loop.nextLine();
-			// loop.close();
+			
 			if(play.equalsIgnoreCase("r")) {
 				System.out.println(dataModel.getRoot());
 				System.out.println();
@@ -132,6 +132,7 @@ public class Main {
 				play = loop.nextLine();
 			}
 		
+			// loop.close();
 			if (play.equalsIgnoreCase("n")) {
 				cont = false;
 				System.out.println("bye");
