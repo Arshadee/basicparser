@@ -53,7 +53,13 @@ public class Node<T> implements INode<T>{
 
     @Override
     public String toString(){
-        return "name "+name+ " parent "+parent;
+        //return "name "+name+ " parent "+parent;
+        String nodeString = name+"(";
+        for(INode<T> child : children){
+            nodeString=nodeString+child;
+        }
+        nodeString=nodeString+")";
+        return nodeString;
     }
 
     public List<INode<T>> getChildren(){

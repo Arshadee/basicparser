@@ -120,11 +120,19 @@ public class Main {
 
 			@SuppressWarnings("resource")
 			Scanner loop = new Scanner(System.in);
+			System.out.println("To display the expression Stringfrom the Root Node press r");
+			System.out.println("Or");
 			System.out.println("Do you wish to continue y/n");
 			String play = loop.nextLine();
 			// loop.close();
-
-			if (!play.equalsIgnoreCase("y")) {
+			if(play.equalsIgnoreCase("r")) {
+				System.out.println(dataModel.getRoot());
+				System.out.println();
+				System.out.println("Do you wish to continue y/n");
+				play = loop.nextLine();
+			}
+		
+			if (play.equalsIgnoreCase("n")) {
 				cont = false;
 				System.out.println("bye");
 				System.out.println("*************************************************************************\n");
