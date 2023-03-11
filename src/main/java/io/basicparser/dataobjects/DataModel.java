@@ -43,13 +43,5 @@ public class DataModel implements IDataModel{
 	}
 	public void setRoot(INode<String> root) {
 		this.root = root;
-	}
-//	public IObjectTree getObjectTree() {
-//		return objectTree;
-//	}
-//	public void setObjectTree(IObjectTree objectTree) {
-//		this.objectTree = objectTree;
-//	}
-
-   
+	}   
 }
