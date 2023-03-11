@@ -18,7 +18,6 @@ public class DataModel implements IDataModel{
     private List<INode<String>> nodeList = new ArrayList<>();
     private HashMap<String,INode<String>> parsingMap = new HashMap<>();
     private INode<String> root = new Node<>();
-   // private IObjectTree objectTree = new ObjectTree();
     
 	public Stack<String> getParsingStack() {
 		return parsingStack;
