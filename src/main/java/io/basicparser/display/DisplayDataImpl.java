@@ -46,7 +46,8 @@ public class DisplayDataImpl implements IDisplayData{
 	 */
 	@Override
 	public StringBuilder display(INode<String> treeNode, String tab, StringBuilder result) {
-		result.append(tab + treeNode.getName() + "[" + treeNode.getValue() + "]\n");
+		//result.append(tab + treeNode.getName() + "[" + treeNode.getValue() + "]\n");
+		result.append(tab + treeNode.getName() + "\n");
 		// traverse children
 		int childCount = treeNode.getChildren().size();
 
