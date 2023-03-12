@@ -7,6 +7,7 @@ import io.basicparser.dataobjectsInterfaces.IDataModel;
 import io.basicparser.display.DisplayDataImpl;
 import io.basicparser.displayinterfaces.IDisplayData;
 import io.basicparser.fileio.ReadFile;
+import io.basicparser.fileio.WriteFile;
 import io.basicparser.parser.ConverterRecursiveImpl;
 import io.basicparser.parser.Parser;
 import io.basicparser.parserinterfaces.IConverter;
@@ -20,6 +21,7 @@ public class MainFileIO {
 		IConverter converter = new ConverterRecursiveImpl();
 		ReadFile rf = new ReadFile();
 		IDisplayData displayData = new DisplayDataImpl();
+		WriteFile wf = new WriteFile();
 		
 		String filePath = "src/main/resources/permExpr.txt";
 		String expression = rf.getPermTreeExprStringFrmFile(filePath);
@@ -43,6 +45,7 @@ public class MainFileIO {
 		System.out.println(result);
 		System.out.println();
 		System.out.println("Size of Permutation Tree : "+(dataModel.getParsingMap().keySet().size()-1));
+		wf.writePermTreeStringToFile("permTreeOutput.txt", result);
 
 		
 	}
