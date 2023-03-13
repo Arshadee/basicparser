@@ -11,7 +11,6 @@ public class WriteFile {
 			      myWriter.write(payload);
 			      myWriter.close();
 			      System.out.println("Successfully wrote to file.");
-			      System.out.println();
 			      System.out.println("src/main/resources/"+filePath);
 			    } catch (IOException e) {
 			      System.out.println("An error occurred.");
