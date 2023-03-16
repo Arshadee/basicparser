@@ -22,6 +22,7 @@ public interface IConverter {
 	 * @return
 	 */
 	public default List<String> mapToStringTokenList(String expression) {
+		expression = expression.substring(expression.indexOf("root"));
 		expression = expression.replace("(", " ( ").replace(")", " ) ");
 		List<String> tokens = new ArrayList<>();
 		StringTokenizer tokenizer = new StringTokenizer(expression, " ");
