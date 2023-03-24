@@ -25,6 +25,8 @@ public class MainFileIO {
 		
 		String filePath = "src/main/resources/permExpr.txt";
 		String expression = rf.getPermTreeExprStringFrmFile(filePath);
+		// String s1 = s.substring(s.indexOf("=") + 1);
+		expression = expression.substring(expression.indexOf("root("));
 		
 		List<String> tokens = converter.mapToStringTokenList(expression);
 		
